@@ -823,7 +823,7 @@
 
   <div id="mainContent" style="display: none;">
     <nav class="navigation-bar">
-      <button class="nav-button" onclick="goBackToSelection()">← All Destinations</button>
+      <button class="nav-button" onclick="goBackToSelection()">←Back</button>
       <div class="current-location" id="currentDateDisplay">Bodh Gaya</div>
       <div style="display: flex; gap: 0.5rem;">
         <button class="nav-button" id="prevDayBtn" onclick="navigateDay(-1)">‹ Prev</button>
@@ -2377,8 +2377,23 @@ function goBackToSelection() {
     });
 
     document.querySelectorAll('.day-card').forEach(c => c.style.pointerEvents = 'auto');
+
+    // Add scroll listener to hide automatically
+    const hideOnScroll = () => {
+      dayPage.style.transform = 'translateX(100%)';
+      dayPage.style.opacity = '0';
+
+      setTimeout(() => {
+        dayPage.style.display = 'none';
+      }, 300);
+
+      window.removeEventListener('scroll', hideOnScroll);
+    };
+
+    window.addEventListener('scroll', hideOnScroll, { passive: true });
   }, 300);
 }
+
 
 
     function navigateDay(direction) {
