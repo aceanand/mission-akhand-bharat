@@ -1,0 +1,2528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacred Journey: Buddhist Circuit & Spiritual Pilgrimage</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+    :root {
+      --primary: #FF6B35;
+      --primary-dark: #E55A2B;
+      --secondary: #2D1B69;
+      --success: #10B981;
+      --text-primary: #1F2937;
+      --text-secondary: #6B7280;
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F9FAFB;
+      --bg-tertiary: #F3F4F6;
+      --border-light: #E5E7EB;
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, #1E1B4B 100%);
+      --gradient-warm: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 50%, #F59E0B 100%);
+      --border-radius-lg: 0.75rem;
+      --border-radius-xl: 1rem;
+      --border-radius-2xl: 1.5rem;
+      --border-radius-3xl: 2rem;
+      --transition-normal: 0.3s ease-out;
+      --transition-slow: 0.5s ease-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-secondary);
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 53%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40%, 43% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    .hero-header {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 4rem 0 6rem;
+      margin: 2rem 1rem 3rem;
+      border-radius: var(--border-radius-3xl);
+      box-shadow: var(--shadow-2xl);
+      position: relative;
+      animation: fadeInScale 0.8s ease-out;
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      font-weight: 400;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+    }
+
+    .hero-description {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      opacity: 0.85;
+      font-weight: 300;
+    }
+
+    .day-selection-container {
+      background: var(--bg-primary);
+      border-radius: var(--border-radius-3xl);
+      padding: 3rem 2rem;
+      margin: 2rem auto;
+      max-width: 1400px;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border-light);
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4rem;
+      height: 3px;
+      background: var(--gradient-primary);
+    }
+
+    .days-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) {
+      .days-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .days-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+    }
+
+    .day-card {
+      background: var(--bg-primary);
+      border-radius: var(--border-radius-2xl);
+      padding: 2rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      animation: fadeInUp 0.6s ease-out both;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .day-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+      transform: scaleX(0);
+      transition: transform var(--transition-normal);
+    }
+
+    .day-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-2xl);
+      border-color: var(--primary);
+    }
+
+    .day-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .day-number {
+      width: 3.5rem;
+      height: 3.5rem;
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      box-shadow: var(--shadow-md);
+      flex-shrink: 0;
+    }
+
+    .day-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .day-title {
+      font-weight: 600;
+      font-size: 1.125rem;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .day-date {
+      color: var(--primary);
+      font-weight: 500;
+      font-size: 0.875rem;
+    }
+
+    .day-destinations {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .travel-info {
+      background: rgba(255, 107, 53, 0.08);
+      padding: 1rem;
+      border-radius: var(--border-radius-lg);
+      font-size: 0.8rem;
+      color: var(--primary-dark);
+      border-left: 3px solid var(--primary);
+      margin-top: auto;
+    }
+
+    .navigation-bar {
+      position: sticky;
+      top: 1rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 1rem 2rem;
+      margin: 1rem;
+      border-radius: var(--border-radius-2xl);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .nav-button {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius-xl);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      font-family: inherit;
+    }
+
+    .nav-button:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .nav-button:disabled {
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      cursor: not-allowed;
+    }
+
+    .current-location {
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: center;
+      flex: 1;
+      margin: 0 1rem;
+      font-size: 0.95rem;
+    }
+ .progress-section {
+  position: fixed;
+  bottom: 1.5rem;      
+  left: 50%;           
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column; /* stack card and bar vertically */
+  align-items: center;
+  gap: 0.5rem;          /* space between card and bar */
+  max-width: 90%;       /* responsive width */
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+/* Card */
+.progress-card {
+  background: var(--bg-primary);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: auto;
+}
+
+.progress-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Circle */
+.progress-circle {
+  --circle-size: 3rem;
+  width: var(--circle-size);
+  height: var(--circle-size);
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--primary) var(--progress, 0deg),
+    var(--bg-tertiary) var(--progress, 0deg)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--primary);
+  position: relative;
+}
+
+.progress-circle::after {
+  content: '';
+  position: absolute;
+  width: calc(var(--circle-size) * 0.75);
+  height: calc(var(--circle-size) * 0.75);
+  background: var(--bg-primary);
+  border-radius: 50%;
+}
+
+/* Info */
+.progress-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.progress-title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.progress-detail {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Progress Bar Container */
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: width 0.5s ease-out;
+  border-radius: inherit;
+  width: var(--progress-percent, 0%);
+}
+
+/* Stats */
+.progress-stats {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+
+
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--text-secondary);
+    }
+
+    .reset-button {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius-lg);
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      font-family: inherit;
+    }
+
+    .reset-button:hover {
+      background: var(--primary-dark);
+    }
+
+   
+
+    .search-input {
+      width: 100%;
+      padding: 1rem 3rem 1rem 1.5rem;
+      border: 2px solid var(--border-light);
+      border-radius: var(--border-radius-2xl);
+      font-size: 1rem;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      transition: all var(--transition-normal);
+      font-family: inherit;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+    }
+
+    .content-card {
+      background: var(--bg-primary);
+      border-radius: var(--border-radius-2xl);
+      margin: 2rem 1rem;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out both;
+      border: 1px solid var(--border-light);
+    }
+
+    .content-header {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .content-body {
+      padding: 2rem;
+    }
+
+    .attractions-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      .attractions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      }
+    }
+
+    .attraction-card {
+      background: linear-gradient(145deg, var(--bg-primary) 0%, rgba(255, 107, 53, 0.02) 100%);
+      border-radius: var(--border-radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-normal);
+      border-left: 4px solid var(--primary);
+      position: relative;
+      border: 1px solid var(--border-light);
+    }
+
+    .attraction-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .attraction-card.visited {
+      background: linear-gradient(145deg, var(--success) 0%, #059669 100%);
+      color: white;
+      animation: bounce 0.6s ease-in-out;
+    }
+
+    .attraction-title {
+      font-size: 1.375rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .attraction-card.visited .attraction-title {
+      color: white;
+    }
+
+    .custom-checkbox {
+      position: relative;
+      width: 1.5rem;
+      height: 1.5rem;
+      cursor: pointer;
+    }
+
+    .custom-checkbox input {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 1.5rem;
+      width: 1.5rem;
+      background: var(--bg-primary);
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      transition: all var(--transition-normal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .custom-checkbox input:checked ~ .checkmark {
+      background: var(--primary);
+    }
+
+    .checkmark::after {
+      content: "✓";
+      color: white;
+      font-weight: bold;
+      font-size: 0.875rem;
+      display: none;
+    }
+
+    .custom-checkbox input:checked ~ .checkmark::after {
+      display: block;
+    }
+
+    .attraction-description {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .attraction-card.visited .attraction-description {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .historical-note {
+      background: var(--gradient-secondary);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: var(--border-radius-lg);
+      font-style: italic;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .historical-note::before {
+      content: "📿 ";
+    }
+
+    .expand-button {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius-xl);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all var(--transition-normal);
+      font-family: inherit;
+    }
+
+    .expand-button:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .detailed-info {
+      max-height: 0;
+      overflow: hidden;
+      transition: all var(--transition-slow);
+      opacity: 0;
+    }
+
+    .detailed-info.show {
+      max-height: 1000px;
+      opacity: 1;
+      margin-top: 1.5rem;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--border-light);
+    }
+
+    .info-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .info-title {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-content {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .timing-info {
+      background: var(--success);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: var(--border-radius-lg);
+      font-size: 0.875rem;
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    .fab {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 3.5rem;
+      height: 3.5rem;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      border: none;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-xl);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    .fab.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .fab:hover {
+      transform: scale(1.1);
+    }
+
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity var(--transition-slow);
+    }
+
+    .loading-overlay.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .spinner {
+      width: 4rem;
+      height: 4rem;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 2rem;
+    }
+
+    .loading-text {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .special-highlight {
+      background: var(--gradient-warm);
+      color: var(--secondary);
+      padding: 1.5rem 2rem;
+      border-radius: var(--border-radius-lg);
+      font-weight: 500;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      box-shadow: var(--shadow-md);
+    }
+
+    @media (max-width: 767px) {
+      .hero-header {
+        margin: 1rem;
+        padding: 3rem 0 4rem;
+      }
+
+      .day-selection-container {
+        margin: 1rem;
+        padding: 2rem 1rem;
+      }
+
+      .navigation-bar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .content-card {
+        margin: 1rem;
+      }
+
+      .fab {
+        bottom: 1rem;
+        right: 1rem;
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-overlay" id="loading">
+    <div class="spinner"></div>
+    <div class="loading-text">Loading Sacred Journey...</div>
+  </div>
+
+  <button class="fab" id="fabScrollTop" onclick="scrollToTop()">↑</button>
+
+  <div id="daySelectionPage">
+    <header class="hero-header">
+      <div class="hero-content">
+        <h1 class="hero-title">Sacred Journey</h1>
+        <p class="hero-subtitle">Buddhist Circuit & Spiritual Pilgrimage</p>
+        <p class="hero-description">13-Day Spiritual Pilgrimage Through India's Sacred Heartland</p>
+      </div>
+    </header>
+
+    <div class="day-selection-container">
+      <h2 class="section-title">Choose Your Sacred Destination</h2>
+      <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; font-size: 1.1rem;">
+        October 13-25, 2024 • Explore sacred cities across North India's spiritual heartland
+      </p>
+      <div class="days-grid" id="daysGrid"></div>
+    </div>
+  </div>
+
+  <div id="mainContent" style="display: none;">
+    <nav class="navigation-bar">
+      <button class="nav-button" onclick="goBackToSelection()">← All Destinations</button>
+      <div class="current-location" id="currentDateDisplay">Bodh Gaya</div>
+      <div style="display: flex; gap: 0.5rem;">
+        <button class="nav-button" id="prevDayBtn" onclick="navigateDay(-1)">‹ Prev</button>
+        <button class="nav-button" id="nextDayBtn" onclick="navigateDay(1)">Next ›</button>
+      </div>
+    </nav>
+
+    <section class="progress-section">
+      <div class="progress-card">
+        <div class="progress-circle" id="progressCircle">
+          <span id="progressText">0%</span>
+        </div>
+        <div class="progress-info">
+          <div class="progress-title">Progress</div>
+          <div class="progress-detail" id="progressDetails">0/0 Sites Visited</div>
+        </div>
+        <button class="reset-button" onclick="clearProgress()">Reset</button>
+      </div>
+    </section>
+
+  
+
+    <div id="currentDayContent"></div>
+  </div>
+
+  <script>
+    let currentDay = 1;
+    let checkboxStates = {};
+    let totalAttractions = 0;
+    let completedAttractions = 0;
+    const STORAGE_KEY = 'sacred-journey-progress';
+
+    const dayData = {
+      1: {
+  placeName: "Bodh Gaya",
+  subtitle: "Land of Enlightenment",
+  dates: "October 13, 2024",
+  destinations: "Mahabodhi Temple • Bodhi Tree • Great Buddha Statue • Archaeological Museum • Vishnupad Temple • Falgu River • International Monasteries • Dungeshwari Caves • Sujata Temple • Niranjana River",
+  travel: "🚂 Morning arrival Gaya Junction • 🏛️ Bodh Gaya temple circuit (13 km from station) • International monastery tour • Peaceful evening meditation • 🚕 Local transport readily available",
+  description: "Begin your sacred journey in Bodh Gaya, the most important Buddhist pilgrimage site where Prince Siddhartha attained enlightenment under the Bodhi tree 2,500 years ago. This UNESCO World Heritage site radiates spiritual energy and draws pilgrims from around the world. Located 115 km south of Patna and 16 km from Gaya, Bodh Gaya is one of the four holy sites related to the life of Lord Buddha, alongside Lumbini (birthplace), Sarnath (first sermon), and Kushinagar (death).",
+  wikipedia: "https://en.wikipedia.org/wiki/Bodh_Gaya",
+  attractions: [
+    {
+      id: "mahabodhi",
+      name: "Mahabodhi Temple Complex",
+      description: "UNESCO World Heritage site marking the exact spot where Prince Siddhartha attained enlightenment and became the Buddha. This is one of the earliest brick Buddhist temples still standing in India.",
+      historical: "Built by Emperor Ashoka in 3rd century BCE, the current structure was rebuilt in 5th–6th century CE during the Gupta period. It became a UNESCO World Heritage Site in June 2002.",
+      travel: "📍 Morning arrival recommended • 🏛️ Temple circuit • 2-3 hours • 🎫 Entry: Free",
+      wikipedia: "https://en.wikipedia.org/wiki/Mahabodhi_Temple",
+      unesco: "https://whc.unesco.org/en/list/1056/",
+      details: {
+        sections: [
+          { 
+            title: "🏛️ Architecture & Design", 
+            content: "The 50-meter (164 feet) high pyramidal spire represents the axis of the universe in Buddhist cosmology. The temple showcases classic Gupta architecture with intricate carvings depicting Buddha's life events and Jataka tales. The structure is built entirely of brick, making it one of the oldest brick temples in India. The four corners have smaller towers designed in the same style. The temple faces east and is surrounded by stone railings from various periods." 
+          },
+          { 
+            title: "🧘‍♂️ Sacred Significance", 
+            content: "This is where Siddhartha Gautama meditated for 49 days, achieving enlightenment at age 35 around 528 BCE. The Diamond Throne (Vajrasana), a red sandstone slab, marks the exact spot of enlightenment. According to Buddhist tradition, this spot will remain undisturbed until the end of the world. The temple complex contains six other sacred sites where Buddha spent time after attaining enlightenment, including the Jewel Walk (Ratnachakrama) where he practiced walking meditation." 
+          },
+          { 
+            title: "🕉️ Religious Importance", 
+            content: "For Buddhists worldwide, this is the most sacred pilgrimage destination. Monks and devotees from Tibet, Thailand, Myanmar, Japan, China, Sri Lanka, and other Buddhist nations visit daily. The temple sees hundreds of thousands of pilgrims annually, especially during Buddha Purnima (full moon in May). The site represents the moment Buddhism was born, making it the spiritual birthplace of one of the world's major religions." 
+          },
+          { 
+            title: "🎨 Artistic Heritage", 
+            content: "The temple walls are adorned with sculptures depicting scenes from Buddha's life. Stone railings from the Sunga period (2nd century BCE) still survive. The temple houses a large gilded image of Buddha in the Bhumisparsha Mudra (earth-touching gesture), symbolizing the moment of enlightenment. Archaeological excavations have revealed artifacts from various periods, showcasing continuous worship over 2,000+ years." 
+          }
+        ],
+        timing: "Open: 5:00 AM - 9:00 PM daily • Entry: Free • Duration: 2-3 hours • Best Time: Early morning (5:30-7:00 AM) for peaceful meditation and evening aarti (6:00-7:00 PM) • Full Moon Days: Special prayers and ceremonies • Peak Season: October to March",
+        tips: "Dress modestly (covered shoulders and knees) • Remove shoes before entering • Photography allowed outside only • Maintain silence inside temple • Best experienced during early morning hours when monks chant • Circumambulate the temple clockwise"
+      }
+    },
+    {
+      id: "bodhitree",
+      name: "Sacred Bodhi Tree (Bodhi Vriksha)",
+      description: "A direct descendant of the original Bodhi tree (Ficus religiosa) under which Buddha meditated and attained enlightenment. This sacred fig tree is the heart of Buddhist pilgrimage, where thousands meditate daily seeking spiritual awakening.",
+      historical: "The original tree was destroyed multiple times throughout history. The present tree was planted in 1881 from a cutting brought from Sri Lanka, where Princess Sanghamitta had planted a sapling from the original tree in 288 BCE. This maintains an unbroken lineage spanning over 2,300 years, making it one of the oldest documented trees in the world by lineage.",
+      travel: "📍 Within Mahabodhi Complex • 🚶‍♂️ 2 mins walk from main temple • Adjacent to Vajrasana (Diamond Throne)",
+      wikipedia: "https://en.wikipedia.org/wiki/Bodhi_Tree",
+      details: {
+        sections: [
+          { 
+            title: "🌳 Sacred Lineage & History", 
+            content: "The current Bodhi tree is approximately 140 years old but represents the fifth generation descendant of the original tree. When Emperor Ashoka's wife, jealous of his devotion, destroyed the original tree, a new sapling was planted. King Purnavarma restored it in the 4th century CE. When King Shashanka cut it down in the 7th century, King Purnavarman planted another. The Sri Lankan cutting saved the lineage when all trees in India were destroyed. Today's tree came from Anuradhapura, Sri Lanka, creating a sacred circle of lineage." 
+          },
+          { 
+            title: "🙏 Meditation & Spiritual Practice", 
+            content: "Thousands of pilgrims from around the world sit beneath this tree daily in meditation. The atmosphere is charged with spiritual energy as Buddhist monks in maroon, orange, and yellow robes chant sutras. Many report profound meditative experiences here. The practice of circumambulation (walking meditation) around the tree is considered highly meritorious. During Vesak (Buddha's birthday), the tree is decorated with lights and flowers, and continuous meditation sessions run for 24 hours." 
+          },
+          { 
+            title: "🌿 Botanical & Cultural Significance", 
+            content: "The Bodhi tree (Ficus religiosa or Peepal tree) is considered sacred in Hindu, Buddhist, and Jain traditions. It's known for its heart-shaped leaves that rustle even in the slightest breeze, symbolizing the constant movement of the mind. The tree is carefully protected and maintained by the Archaeological Survey of India. Cuttings from this tree are sent to Buddhist temples worldwide, spreading its sacred lineage globally." 
+          },
+          { 
+            title: "💫 Miracles & Legends", 
+            content: "According to Buddhist tradition, when Buddha sat under the original tree, it remained green and fresh throughout his 49 days of meditation despite the season. The tree is said to emit spiritual vibrations. Many pilgrims report experiencing visions, deep peace, or spiritual breakthroughs while meditating here. The leaves of the tree are collected by devotees as sacred relics and are often preserved in Buddhist monasteries worldwide." 
+          }
+        ],
+        timing: "Accessible during temple hours: 5:00 AM - 9:00 PM • Peak meditation hours: Sunrise (5:30-7:00 AM) and sunset (5:00-7:00 PM) • Full Moon Nights: 24-hour access with special prayers • Best season: Winter months (October-February) for comfortable meditation",
+        tips: "Arrive early for peaceful meditation space • Sit on the western side facing east (traditional position) • Free group meditation sessions often available • Respect silence zones • Photography allowed but avoid disturbing meditators • Collect fallen leaves as sacred souvenirs (don't pluck from tree)"
+      }
+    },
+    {
+      id: "greatbuddha",
+      name: "Great Buddha Statue (80-Foot Buddha)",
+      description: "A magnificent 25-meter (80 feet) tall bronze statue of Buddha in meditation pose (Dhyana Mudra), seated on a lotus pedestal. One of the tallest Buddha statues in India and a modern architectural marvel inaugurated in 1989.",
+      historical: "Constructed by the Daijokyo Sect of Japanese Buddhism, the project took 7 years to complete (1982-1989). The statue was consecrated by the 14th Dalai Lama. It represents international Buddhist unity and contains sacred relics inside.",
+      travel: "📍 1.5 km from Mahabodhi Temple • 🚶‍♂️ 20-min walk or 5-min rickshaw ride • Located in Japanese Temple Complex",
+      wikipedia: "https://en.wikipedia.org/wiki/Great_Buddha_(Bodh_Gaya)",
+      details: {
+        sections: [
+          { 
+            title: "🗿 Architecture & Construction", 
+            content: "The Buddha statue stands 18.5 meters (61 feet) tall, with the total construction including the lotus pedestal reaching 25 meters (80 feet). Made of bronze and red sandstone, the statue weighs several tons. Buddha is depicted in Dhyana Mudra (meditation pose) with both hands resting in the lap, representing concentration and inner peace. The statue is surrounded by beautiful landscaped gardens with smaller Buddha statues and stupas. The Japanese architectural influence is evident in the design and surrounding temple structures." 
+          },
+          { 
+            title: "🌸 Japanese Buddhist Temple Complex", 
+            content: "The statue is part of the Daijokyo Buddhist Temple complex, built by the Daijokyo Sect from Nagoya, Japan. The temple features traditional Japanese architecture with sloping roofs and minimalist design. Inside the temple are beautiful Japanese Buddhist paintings, meditation halls, and a library. The complex serves as a monastery for Japanese monks visiting Bodh Gaya and offers meditation courses to visitors." 
+          },
+          { 
+            title: "📿 Spiritual Significance", 
+            content: "The statue contains sacred relics and is considered highly auspicious for prayer and meditation. Many pilgrims walk around the statue clockwise while chanting mantras. The peaceful energy and serene garden setting make it ideal for contemplation. During Buddha Purnima and other Buddhist festivals, special pujas and ceremonies are conducted here with participation from international Buddhist communities." 
+          },
+          { 
+            title: "🎭 Cultural Experience", 
+            content: "The site offers a unique blend of Indian and Japanese Buddhist traditions. Visitors can observe Japanese Buddhist rituals, distinct from other schools of Buddhism. The temple occasionally hosts Japanese cultural events, tea ceremonies, and meditation workshops. The contrast between the towering statue and the tranquil surroundings creates a powerful spiritual atmosphere." 
+          }
+        ],
+        timing: "Open: 6:00 AM - 6:00 PM daily • Entry: Free • Duration: 1 hour • Best Time: Morning (7:00-9:00 AM) or late afternoon (4:00-6:00 PM) for photography • Sunrise and sunset views: Spectacular",
+        tips: "Remove shoes before entering temple premises • Dress modestly • Photography allowed outside • Peaceful gardens perfect for meditation • Visit combined with nearby Thai and Bhutanese monasteries • Sunset photography from the gardens is spectacular"
+      }
+    },
+    {
+      id: "monasteries",
+      name: "International Monasteries Circuit",
+      description: "Bodh Gaya hosts over 40 monasteries representing different Buddhist traditions and countries, creating a unique international Buddhist community. Each monastery showcases distinct architectural styles, cultural traditions, and meditation practices.",
+      historical: "Monasteries were established from the 1950s onwards as Buddhist nations sought to maintain a presence at this most sacred site. They represent a revival of international Buddhist pilgrimage after centuries of decline.",
+      travel: "📍 Spread across 3-5 km radius • 🚲 Best explored by bicycle or rickshaw • 🕐 Half-day circuit (4-6 hours)",
+      details: {
+        sections: [
+          { 
+            title: "🇹🇭 Thai Temple & Monastery", 
+            content: "Features stunning traditional Thai architecture with multi-tiered sloping roofs covered in golden tiles. Houses a magnificent bronze Buddha statue and intricate Thai Buddhist art. The temple's interior is adorned with colorful murals depicting Buddha's life. Thai monks conduct daily prayers and offer meditation courses. The monastery includes a guesthouse for Thai pilgrims and visitors. Annual Thai festivals are celebrated with traditional music, dance, and food." 
+          },
+          { 
+            title: "🇧🇹 Bhutanese Monastery", 
+            content: "Built in classic Bhutanese style with fortress-like architecture, colorful paintings, and intricate woodwork. Features prayer wheels, thangka paintings, and traditional Bhutanese Buddhist iconography. Hosts monks from Bhutan who perform rituals according to the Drukpa Kagyu lineage. The monastery organizes Buddhist teachings and meditation retreats. Bhutanese festivals like Losar (New Year) are celebrated with mask dances and ceremonies." 
+          },
+          { 
+            title: "🇹🇼 Chinese Temple & Monastery", 
+            content: "Showcases Chinese Buddhist architecture with curved roofs, dragon motifs, and red pillars. Houses a large collection of Chinese Buddhist scriptures and art. Chinese monks conduct Mahayana Buddhist ceremonies and meditation sessions. The temple features beautiful gardens with bonsai trees and Chinese landscaping. Celebrates Chinese Buddhist festivals including the Lantern Festival and Hungry Ghost Festival." 
+          },
+          { 
+            title: "🇲🇲 Burmese Vihara", 
+            content: "Built in traditional Myanmar style with golden spires and colorful glass mosaics. Houses precious Burmese Buddha statues and relics. Burmese monks practice Theravada Buddhism and offer Vipassana meditation courses. The monastery includes a library of Pali scriptures and Buddhist philosophy texts. Known for its beautiful meditation hall and peaceful environment." 
+          },
+          { 
+            title: "🇹🇼 Taiwanese Monastery", 
+            content: "Modern architectural design with traditional elements, featuring spacious meditation halls and beautiful gardens. Offers vegetarian meals to visitors and pilgrims. Hosts regular Dharma talks and meditation retreats conducted in multiple languages. Features a large collection of Buddhist literature and multimedia resources for study." 
+          },
+          { 
+            title: "🇻🇳 Vietnamese Temple", 
+            content: "Combines Vietnamese and Chinese architectural elements with colorful decorations and statues. Known for its peaceful atmosphere and well-maintained gardens. Vietnamese monks conduct Pure Land Buddhist practices and ceremonies. The temple celebrates Vietnamese Buddhist festivals with traditional vegetarian feasts." 
+          },
+          { 
+            title: "🏔️ Tibetan Monasteries", 
+            content: "Multiple Tibetan monasteries representing different schools (Gelug, Kagyu, Nyingma, Sakya). Feature traditional Tibetan architecture with prayer flags, stupas, and mandala paintings. Tibetan monks in maroon robes perform elaborate rituals, butter lamp offerings, and ritual music. Many offer teachings on Tibetan Buddhism, Tibetan language courses, and traditional arts. The Tergar Monastery conducts year-round meditation programs and retreats led by qualified teachers." 
+          }
+        ],
+        timing: "Most monasteries open: 6:00 AM - 8:00 PM • Best visiting hours: 7:00-11:00 AM and 4:00-6:00 PM • Prayer times: Morning (6:00-8:00 AM) and evening (5:00-7:00 PM) • Respect individual monastery schedules",
+        tips: "Dress modestly at all monasteries • Remove shoes before entering • Many offer free accommodation for serious practitioners • Participate in meditation sessions (often free) • Try vegetarian meals at monastery cafeterias • Respect photography rules (ask permission) • Best explored over 2 days for meaningful experience • Bicycle rental available in town center"
+      }
+    },
+    {
+      id: "archaeologicalmuseum",
+      name: "Archaeological Museum Bodh Gaya",
+      description: "Houses an extensive collection of Buddhist sculptures, relics, and artifacts excavated from Bodh Gaya and surrounding areas, spanning from the Mauryan to the Pala period (3rd century BCE to 12th century CE).",
+      historical: "Established by the Archaeological Survey of India, the museum preserves and displays the rich archaeological heritage of Bodh Gaya, including rare sculptures and inscriptions that document the site's continuous religious significance over 2,500 years.",
+      travel: "📍 Near Mahabodhi Temple Complex • 🚶‍♂️ 10-min walk • 🎫 Nominal entry fee",
+      details: {
+        sections: [
+          { 
+            title: "🏛️ Collections & Exhibits", 
+            content: "The museum displays Buddha statues from various periods showing evolution of Buddhist art. Key exhibits include stone railings with intricate carvings, Ashokan-era artifacts, Gupta period sculptures, and medieval bronze statues. Notable pieces include Buddha images in various mudras (hand gestures), bodhisattva statues, and decorative elements from ancient stupas. The collection includes rare inscriptions in Brahmi, Nagari, and other scripts documenting royal patronage and pilgrim visits." 
+          },
+          { 
+            title: "🎨 Artistic Evolution", 
+            content: "The exhibits chronologically showcase the development of Buddhist art from aniconic representations (symbols rather than human forms) in early periods to elaborate Buddha images in Gandhara and Mathura styles, and finally the refined Gupta art considered the golden age of Indian sculpture. Visitors can observe how Buddha's iconography evolved across different dynasties and regional influences." 
+          },
+          { 
+            title: "📚 Educational Value", 
+            content: "Informative labels in English and Hindi explain the historical context of each artifact. The museum provides insights into ancient Buddhist monastic life, ritual practices, and architectural evolution. It helps visitors understand the continuous religious and cultural importance of Bodh Gaya through centuries of patronage by different dynasties including Mauryas, Sungas, Kushanas, Guptas, and Palas." 
+          }
+        ],
+        timing: "Open: 10:00 AM - 5:00 PM • Closed: Friday • Entry: ₹15 for Indians, ₹200 for foreigners • Duration: 1-1.5 hours • Best Time: Late morning (11:00 AM - 1:00 PM) to avoid crowds",
+        tips: "Photography may be restricted or require additional fee • Guided tours available for groups (book in advance) • Combine visit with Mahabodhi Temple tour • Visit museum first to understand historical context before exploring temples"
+      }
+    },
+    {
+      id: "dungeshwaricaves",
+      name: "Dungeshwari Caves (Mahakala Caves)",
+      description: "Sacred caves located on a hilltop where Prince Siddhartha practiced extreme asceticism for 6 years before moving to Bodh Gaya. These caves mark a crucial phase in Buddha's spiritual journey, where he realized that severe austerities were not the path to enlightenment.",
+      historical: "Used by Siddhartha from approximately 534-528 BCE during his ascetic period. After nearly starving himself, he was revived by Sujata's offering of kheer (milk rice) and abandoned extreme practices, choosing instead the Middle Path. The caves have been a pilgrimage site for over 2,500 years.",
+      travel: "📍 12 km northeast of Bodh Gaya • 🚗 30-min drive or hired vehicle • ⛰️ Mountain location requires some climbing",
+      wikipedia: "https://en.wikipedia.org/wiki/Dungeshwari_Caves",
+      details: {
+        sections: [
+          { 
+            title: "🏔️ The Sacred Caves", 
+            content: "The complex consists of several natural caves carved into the hillside. The main cave contains a golden statue of Buddha in an emaciated form, depicting his weakened state after years of extreme fasting. This rare representation shows Buddha's ribs and bones, dramatically illustrating his ascetic period. Another cave houses a statue of Buddha accepting food from Sujata, marking the moment he abandoned extreme asceticism. The caves offer panoramic views of the surrounding countryside." 
+          },
+          { 
+            title: "🧘 Spiritual Significance", 
+            content: "This site represents Buddha's realization that neither extreme indulgence (his palace life) nor extreme asceticism (near-starvation) leads to enlightenment. This understanding led him to discover the Middle Path (Madhyama Pratipada), a balanced approach to spiritual practice that became fundamental to Buddhist philosophy. Many practitioners come here to meditate in the same caves where this profound realization occurred." 
+          },
+          { 
+            title: "🙏 Temple & Shrines", 
+            content: "A Hindu temple dedicated to Dungeshwari Devi (a form of the goddess) coexists with Buddhist shrines, reflecting India's syncretic religious traditions. Local Hindus consider the site sacred to Shakti (divine feminine energy). Buddhist pilgrims and Hindu devotees visit harmoniously, demonstrating religious tolerance. The site includes a small monastery maintained by Tibetan monks." 
+          },
+          { 
+            title: "🥾 Pilgrimage Experience", 
+            content: "The journey involves climbing approximately 500 steps to reach the caves, considered a merit-making practice by pilgrims. The climb takes 20-30 minutes for average fitness levels. Local vendors sell offerings, refreshments, and souvenirs along the path. The peaceful hilltop location offers opportunities for meditation and reflection away from Bodh Gaya's crowds. Sunrise and sunset visits are particularly serene and spiritually moving." 
+          }
+        ],
+        timing: "Open: Sunrise to sunset (approximately 6:00 AM - 6:00 PM) • Entry: Free (donations welcome) • Duration: 2-3 hours including travel and climb • Best Time: Early morning (6:00-9:00 AM) or late afternoon (3:00-5:00 PM) to avoid midday heat",
+        tips: "Wear comfortable walking shoes for the climb • Carry water and snacks • Dress modestly (covers shoulders and knees) • Morning visits recommended for cooler weather • Combine with Sujata Temple visit (nearby) • Hire a car/rickshaw for round trip (₹500-800) • Not recommended during monsoon (slippery paths) • Accessible for most fitness levels but some steep sections"
+      }
+    },
+    {
+      id: "sujatatemple",
+      name: "Sujata Temple & Stupa",
+      description: "Commemorates the spot where Sujata, a village girl, offered milk-rice (kheer) to the starving Prince Siddhartha, saving his life and enabling his eventual enlightenment. This act of compassion changed the course of Buddhist history.",
+      historical: "Located in Bakraur village, 2 km from Dungeshwari Caves. The original stupa was built during Emperor Ashoka's time. The present structure dates to later periods. Sujata's offering is celebrated as the first dana (charitable act) in Buddhism.",
+      travel: "📍 7 km from Bodh Gaya, en route to Dungeshwari Caves • 🚗 15-min drive • Often combined with cave visit",
+      details: {
+        sections: [
+          { 
+            title: "🌾 The Legend of Sujata", 
+            content: "Sujata was the daughter of a wealthy farmer who had made a vow to offer kheer (milk-rice pudding) at this sacred tree if blessed with a son. When she came to fulfill her vow, she saw the emaciated Prince Siddhartha meditating under the tree, mistook him for a tree deity, and offered him the kheer in a golden bowl. This rich, nourishing meal restored his strength and convinced him to abandon extreme asceticism. This moment was pivotal—without physical strength, he could not have meditated successfully under the Bodhi tree." 
+          },
+          { 
+            title: "🏛️ Temple & Stupa Architecture", 
+            content: "The site features a simple but elegant stupa and temple structure. Though architecturally modest compared to Mahabodhi Temple, it holds profound spiritual significance. The remains of the sacred tree where the offering occurred are preserved. The peaceful rural setting and serene landscape add to the temple's spiritual ambiance, making it a place of contemplation and homage. The area includes a small meditation platform and gardens." 
+          },
+          { 
+            title: "🙏 Pilgrimage & Worship", 
+            content: "Buddhist pilgrims consider visiting Sujata Temple essential to complete the full narrative of Buddha's enlightenment. Many offer kheer or milk-rice here as a symbolic reenactment of Sujata's compassionate deed. The site is particularly popular among female pilgrims who draw inspiration from Sujata's role in Buddhist history. Local villagers maintain the temple and warmly welcome visitors, often sharing the traditional story." 
+          },
+          { 
+            title: "💫 Spiritual Lessons", 
+            content: "The site teaches the Buddhist principle of dana (generosity) and how compassionate actions, even simple ones, can have profound consequences. Sujata's spontaneous act of kindness, without knowing Siddhartha's identity, exemplifies selfless giving. Her story emphasizes that enlightenment requires both spiritual practice and physical wellbeing—the Middle Path principle. The temple reminds visitors that ordinary people can play extraordinary roles in spiritual history." 
+          }
+        ],
+        timing: "Open: Sunrise to sunset (6:00 AM - 6:00 PM) • Entry: Free • Duration: 30-45 minutes • Best Time: Combine with Dungeshwari Caves visit • Morning hours: Peaceful village atmosphere",
+        tips: "Typically visited as part of Dungeshwari Caves excursion • Respect the rural village setting • Modest dress required • Photography allowed • Local villagers friendly and helpful • Some may offer kheer or milk-rice for dana (donation) • Peaceful spot for meditation away from tourist crowds • Best experienced with a guide who can share the full story"
+      }
+    },
+
+  ],
+  culturalNotes: {
+    title: "Cultural & Spiritual Guidelines",
+    points: [
+      "Bodh Gaya is a multicultural hub where monks and pilgrims from 30+ nations coexist peacefully",
+      "Respect all Buddhist traditions (Theravada, Mahayana, Vajrayana) - each has unique practices",
+      "Photography: Always ask permission before photographing monks, nuns, or worship ceremonies",
+      "Participate respectfully: You're welcome to join meditation sessions and prayers regardless of faith",
+      "Dana (giving): Many monasteries operate on donations - contribute what you can afford",
+      "Silence and contemplation are valued - avoid loud conversations near meditation areas",
+      "Full moon days (Purnima) are especially sacred - expect increased crowds and special ceremonies",
+      "Remove leather items (belts, shoes) before entering certain strict Buddhist temples",
+      "Prostrations: Don't be surprised to see devotees performing full-body prostrations - this is traditional practice",
+      "Mantras and chanting: Join respectfully or sit quietly - both are acceptable",
+      "Vegetarianism is the norm - meat and alcohol difficult to find and culturally discouraged"
+    ]
+  },
+  festivalsAndEvents: {
+    title: "Major Festivals & Events",
+    events: [
+      {
+        name: "Buddha Purnima (Vesak)",
+        time: "Full moon day of Vaisakh (April/May)",
+        description: "The most sacred Buddhist festival celebrating Buddha's birth, enlightenment, and death. Bodh Gaya becomes incredibly crowded with hundreds of thousands of pilgrims. The Mahabodhi Temple is beautifully illuminated, continuous chanting occurs for 24 hours, and special prayers are held. Book accommodation months in advance. The entire town celebrates with processions, meditation marathons, and cultural programs."
+      },
+      {
+        name: "Kagyu Monlam (Prayer Festival)",
+        time: "December/January",
+        description: "Tibetan Buddhist prayer festival lasting 7-10 days, led by the Karmapa or senior Kagyu lineage teachers. Thousands of Tibetan monks gather for group prayers, teachings, and rituals. Features elaborate ceremonies, butter lamp offerings, and traditional Tibetan Buddhist arts. Open to international visitors with special teachings in English."
+      },
+      {
+        name: "Nyingma Monlam",
+        time: "January",
+        description: "Prayer gathering of the Nyingma school of Tibetan Buddhism. Features unique ceremonies, empowerments, and teachings from senior lamas. Includes sacred masked dances (Cham) and ritual music performances."
+      },
+      {
+        name: "Thai Pavilion Festival",
+        time: "February",
+        description: "Annual celebration at the Thai Temple with traditional Thai cultural performances, classical dance, music, and vegetarian feast. Thai monks conduct special blessing ceremonies. Open to all visitors."
+      },
+      {
+        name: "Losar (Tibetan New Year)",
+        time: "February/March",
+        description: "Celebrated by Tibetan monasteries with traditional rituals, butter sculpture offerings, special foods, and cultural performances. Monasteries host public celebrations with Tibetan delicacies and entertainment."
+      },
+      {
+        name: "International Buddhist Conclave",
+        time: "Varies (typically November)",
+        description: "Government-organized event bringing together Buddhist scholars, practitioners, and leaders from around the world for discussions, cultural exchanges, and interfaith dialogue. Features academic seminars and meditation workshops."
+      }
+    ]
+  },
+  dayWiseItinerary: {
+    title: "Suggested Itineraries",
+    options: [
+      {
+        duration: "Day 1: Core Sacred Sites",
+        activities: [
+          "5:30 AM: Sunrise meditation at Bodhi Tree (experience the most peaceful time)",
+          "6:30 AM: Explore Mahabodhi Temple Complex, circumambulate the temple",
+          "8:00 AM: Breakfast at hotel or monastery cafeteria",
+          "9:00 AM: Archaeological Museum visit",
+          "11:00 AM: Great Buddha Statue and Japanese Temple",
+          "1:00 PM: Lunch break",
+          "3:00 PM: Visit 3-4 international monasteries (Thai, Bhutanese, Tibetan)",
+          "6:00 PM: Evening aarti at Mahabodhi Temple",
+          "7:30 PM: Attend meditation session at Root Institute or Tergar Monastery"
+        ]
+      },
+      {
+        duration: "Day 2: Extended Pilgrimage Circuit",
+        activities: [
+          "6:00 AM: Early breakfast and departure for Dungeshwari Caves",
+          "7:00 AM: Visit Sujata Temple (learn the story of Sujata's offering)",
+          "8:30 AM: Climb to Dungeshwari Caves, meditate in the sacred caves",
+          "11:00 AM: Return to Bodh Gaya",
+          "12:30 PM: Lunch",
+          "2:00 PM: Continue monastery circuit (Burmese, Vietnamese, Chinese temples)",
+          "4:00 PM: Walk along Niranjana River (where Buddha bathed after accepting Sujata's offering)",
+          "5:30 PM: Attend evening prayers at a Tibetan monastery",
+          "7:00 PM: Meditation or Dharma talk session",
+          "8:30 PM: Dinner at international restaurant"
+        ]
+      },
+      {
+        duration: "Day 3: Deeper Practice & Exploration",
+        activities: [
+          "Morning: Join full-day meditation retreat at Root Institute or Tergar Monastery",
+          "Alternatively: Visit remaining monasteries and engage in temple volunteering",
+          "Afternoon: Personal meditation practice at Bodhi Tree",
+          "Evening: Attend teaching session by resident lamas (check schedule)",
+          "Shopping for Buddhist books, prayer flags, and souvenirs"
+        ]
+      },
+      {
+        duration: "Extended Stay (7-14 days): Meditation Retreats",
+        activities: [
+          "Enroll in structured meditation courses at Root Institute (Vipassana)",
+          "Tergar Monastery (Mahamudra and Dzogchen teachings)",
+          "Burmese Vihara (Traditional Theravada meditation)",
+          "Participate in daily monastery routines and teachings",
+          "Study Buddhist philosophy and attend Dharma discussions",
+          "Deepen personal practice in the energy of this sacred place",
+          "Most retreats include accommodation, meals, and teachings (donation-based)"
+        ]
+      }
+    ]
+  },
+  nearbyExcursions: {
+    title: "Nearby Places to Visit",
+    places: [
+      {
+        name: "Rajgir (Rajgriha)",
+        distance: "80 km (2 hours)",
+        description: "Ancient capital of Magadha Kingdom where Buddha spent many years teaching. Sites include Gridhakuta Hill (Vulture's Peak) where Buddha delivered important sutras, Venuvana (Bamboo Grove) monastery, ancient ruins, hot springs, and Japanese Peace Pagoda. Accessible by ropeway to hilltop. Rich in both Buddhist and Jain heritage."
+      },
+      {
+        name: "Nalanda",
+        distance: "90 km (2.5 hours)",
+        description: "Ruins of the ancient Nalanda University (5th-12th century CE), once the world's first residential university with 10,000 students and 2,000 teachers. One of Buddhism's greatest centers of learning visited by Xuanzang and other scholars. UNESCO World Heritage Site. The archaeological complex includes monastery ruins, stupas, temples, and a modern museum. Nearby Nalanda Multimedia Museum offers interactive exhibits."
+      },
+      {
+        name: "Vaishali",
+        distance: "180 km (4-5 hours)",
+        description: "Where Buddha delivered his last sermon and announced his approaching Mahaparinirvana. Sites include Ashokan Pillar, Ananda Stupa, Relic Stupa, and ruins of ancient democratic republic. Birthplace of Lord Mahavira (Jainism). Peaceful archaeological park with Buddhist monuments."
+      },
+      {
+        name: "Patna",
+        distance: "110 km (3 hours)",
+        description: "Bihar's capital city, ancient Pataliputra. Visit Patna Museum (excellent collection of Buddhist artifacts including Didarganj Yakshi), Golghar, Gandhi Maidan, and Takht Sri Patna Sahib (important Sikh shrine). Good for shopping, dining, and experiencing urban Bihar. Gateway for air travel."
+      },
+      {
+        name: "Varanasi (Kashi)",
+        distance: "250 km (5-6 hours)",
+        description: "India's spiritual capital on Ganges River. Visit Sarnath (10 km from Varanasi) where Buddha delivered his first sermon after enlightenment - another UNESCO World Heritage Site. Experience Ganga aarti, ancient temples, and spiritual atmosphere. Can be combined in extended Bihar-Uttar Pradesh Buddhist circuit."
+      },
+      {
+        name: "Kesaria Stupa",
+        distance: "110 km (3 hours)",
+        description: "One of the tallest Buddhist stupas in the world (104 feet). Built to commemorate the spot where Buddha spent time during his last journey. Less touristy, offering peaceful rural setting. Ancient brick structure with impressive architecture despite partial ruins."
+      }
+    ]
+  },
+  meditationAndRetreats: {
+    title: "Meditation Centers & Retreat Programs",
+    centers: [
+      {
+        name: "Root Institute for Wisdom Culture",
+        description: "Established by Lama Thubten Yeshe and Lama Zopa Rinpoche (FPMT tradition). Offers structured courses from weekend introductions to month-long intensive retreats. Courses cover meditation, Buddhist philosophy, and contemplative practices. Beautiful campus with gardens, meditation halls, library, and comfortable accommodations. Courses taught in English with experienced teachers. Vegetarian meals included.",
+        contact: "Website: rootinstitute.com • Book courses online • Drop-in meditation sessions available",
+        programs: "Weekend courses, 10-day Vipassana, month-long retreats, teacher training"
+      },
+      {
+        name: "Tergar Monastery",
+        description: "Founded by Yongey Mingyur Rinpoche (Karma Kagyu lineage). Offers teachings on Mahamudra and Dzogchen meditation, mindfulness practices, and Tibetan Buddhism. Year-round programs including meditation courses, retreats, and daily practice sessions. Beautiful modern monastery with excellent facilities. The Joy of Living meditation program is popular with beginners.",
+        contact: "Website: tergar.org • Online registration • Daily meditation open to visitors",
+        programs: "Joy of Living courses, intensive retreats, teacher-led meditation, annual empowerments"
+      },
+      {
+        name: "Burmese Vihara (Mahab odhi Society)",
+        description: "Traditional Theravada Buddhist monastery offering authentic Vipassana meditation in the Burmese tradition. Simple, traditional accommodation available for serious practitioners. Daily meditation schedule with experienced Burmese monks as teachers. Emphasis on intensive practice and mindfulness. Donation-based programs.",
+        contact: "Visit in person • Limited advance booking • Minimum stay often required",
+        programs: "Traditional Vipassana, mindfulness meditation, Dhamma talks"
+      },
+      {
+        name: "Thai Temple Meditation Programs",
+        description: "Offers meditation instruction in Thai Theravada tradition. Regular meditation sessions, chanting, and Buddhist teachings. Beautiful temple grounds conducive to practice. Thai monks provide guidance. Weekend and week-long programs available.",
+        contact: "Visit temple office • Flexible schedules • Accommodation in monastery guesthouse",
+        programs: "Walking meditation, sitting meditation, loving-kindness practice"
+      },
+      {
+        name: "Bhutanese Monastery Retreats",
+        description: "Occasional retreats and teaching programs in Drukpa Kagyu tradition. Features traditional Bhutanese practices including visualization meditation, prostrations, and prayer wheel practice. Cultural immersion with Bhutanese Buddhist traditions.",
+        contact: "Inquire at monastery • Programs often during Bhutanese lamas' visits",
+        programs: "Intensive practice sessions, empowerments, ritual training"
+      }
+    ],
+    tips: [
+      "Book popular retreat centers 2-3 months in advance, especially October-February",
+      "Most centers operate on donation basis - contribute according to your means",
+      "Bring meditation cushion, comfortable loose clothing, and personal items",
+      "Noble silence often observed during intensive retreats",
+      "Beginners welcome at all centers - no prior experience needed",
+      "Many centers offer work-exchange programs for long-term stays",
+      "Respect center guidelines on diet, schedule, and conduct",
+      "Consider health insurance as medical facilities limited in Bodh Gaya"
+    ]
+  },
+  shoppingAndSouvenirs: {
+    title: "Shopping & Souvenirs",
+    items: [
+      "Tibetan prayer flags, wheels, and singing bowls - available at Tibetan Market",
+      "Buddhist statues (Buddha, Tara, Avalokiteshvara) in various sizes and materials",
+      "Thangka paintings (traditional Tibetan Buddhist art) - commission custom pieces",
+      "Buddhist texts and books - Root Institute bookstore has excellent selection",
+      "Meditation supplies: cushions (zafus), mats, malas (prayer beads), incense",
+      "Tibetan jewelry with mantras, turquoise, coral - handcrafted items",
+      "Monastery-blessed protection amulets and blessed strings",
+      "Bodhi tree leaves (naturally fallen) preserved in frames - sacred keepsakes",
+      "Traditional Tibetan clothing: chubas, monk robes for practice",
+      "Buddhist music CDs: mantras, chants, meditation music",
+      "Handicrafts from international monasteries representing different Buddhist cultures",
+      "Handmade paper journals, prayer books, and notebooks from Tibetan cooperatives"
+    ],
+    shoppingAreas: [
+      "Tibetan Refugee Market: Main shopping area with 50+ stalls selling authentic Tibetan goods",
+      "Monastery shops: Each major monastery has a shop with unique items from their country",
+      "Root Institute Bookstore: Best collection of Buddhist books, meditation CDs, and Dharma materials",
+      "Main Market Road: Local shops with religious items, clothing, and everyday goods",
+      "Street vendors: Near Mahabodhi Temple (quality varies, bargain expected)"
+    ],
+    bargainingTips: [
+      "Bargaining expected except in monastery shops and established bookstores",
+      "Start at 50-60% of asking price, settle around 60-75%",
+      "Better prices if buying multiple items",
+      "Quality varies greatly - inspect carefully, especially thangkas and statues",
+      "Monastery shops: Fixed prices, profits support monastic community",
+      "Support Tibetan refugee cooperatives - fair prices, good quality, supports community"
+    ]
+  },
+  photographyTips: {
+    title: "Photography Guidelines & Best Spots",
+    guidelines: [
+      "Mahabodhi Temple: Photography allowed outside only, not inside main sanctum",
+      "Bodhi Tree: Respectful photography allowed, avoid flash and disturbing meditators",
+      "Monasteries: Always ask permission, especially inside prayer halls",
+      "Monks and pilgrims: Never photograph without explicit permission",
+      "Ceremonies and rituals: Ask organizing monks before photographing",
+      "Great Buddha Statue: Excellent photo opportunity, best during golden hour",
+      "Sunrise/sunset: Bodhi Tree and Mahabodhi Temple beautifully lit"
+    ],
+    bestPhotoSpots: [
+      "Mahabodhi Temple at sunrise - golden light on ancient architecture",
+      "Bodhi Tree with morning mist and meditating monks",
+      "Great Buddha Statue at sunset - dramatic lighting",
+      "Tibetan monks in colorful robes during prayer ceremonies",
+      "Prayer flags at Tibetan monasteries against blue sky",
+      "Dungeshwari Caves - panoramic views from hilltop",
+      "International monastery architecture showcasing different Buddhist traditions",
+      "Full moon nights - Mahabodhi Temple illuminated",
+      "Butter lamps and offerings at evening prayers"
+    ]
+  },
+  responsibleTourism: {
+    title: "Responsible & Sustainable Tourism",
+    practices: [
+      "Support local economy: Eat at local restaurants, shop at refugee cooperatives",
+      "Minimize plastic: Carry reusable water bottle, bags, and containers",
+      "Respect sacred sites: Follow all religious protocols and guidelines",
+      "Dress appropriately: Modest clothing shows cultural respect",
+      "Dana (giving): Support monastery operations through appropriate donations",
+      "Environmental care: Don't litter, especially near sacred sites and river",
+      "Cultural sensitivity: Learn basic Buddhist etiquette before visiting",
+      "Support education: Consider donating to local schools and libraries",
+      "Volunteer opportunities: Some monasteries accept volunteers for teaching, gardening",
+      "Sustainable transport: Use bicycles or shared vehicles to reduce carbon footprint",
+      "Respect local community: Bodh Gaya is a living pilgrimage town, not just tourist attraction",
+      "Fair photography: Don't treat monks and pilgrims as exotic photo subjects",
+      "Mindful consumption: Support businesses with ethical practices"
+    ]
+  },
+  importantContacts: {
+    title: "Important Contacts & Information",
+    contacts: [
+      {
+        category: "Emergency Services",
+        details: [
+          "Police: 100",
+          "Ambulance: 108",
+          "Fire: 101",
+          "Tourist Police: Available near Mahabodhi Temple"
+        ]
+      },
+      {
+        category: "Medical Facilities",
+        details: [
+          "Bodh Gaya Sadar Hospital: +91-631-2200230",
+          "Several private clinics near main market",
+          "Gaya Medical College (17 km): For serious emergencies",
+          "Pharmacies: Available near Mahabodhi Temple and main market"
+        ]
+      },
+      {
+        category: "Tourist Information",
+        details: [
+          "Bihar Tourism Office, Bodh Gaya",
+          "Tourist Information Center near Mahabodhi Temple",
+          "Archaeological Survey of India Office",
+          "Hotel receptions generally helpful with tourist information"
+        ]
+      },
+      {
+        category: "Transport",
+        details: [
+          "Gaya Junction Railway Station: +91-631-2221111",
+          "Gaya Airport: +91-631-2470841",
+          "Bus Stand, Bodh Gaya",
+          "Auto-rickshaw and taxi stands near major hotels"
+        ]
+      },
+      {
+        category: "Banking",
+        details: [
+          "SBI ATM: Near Mahabodhi Temple",
+          "ICICI, HDFC ATMs: Main market area",
+          "Money changers: Licensed changers near temple (verify rates)",
+          "Most hotels accept major credit cards"
+        ]
+      }
+    ]
+  },
+  quickFacts: {
+    title: "Quick Facts About Bodh Gaya",
+    facts: [
+      "Population: Approximately 40,000 (swells during pilgrimage season)",
+      "Languages: Hindi, English, Magahi (local dialect), plus various languages from international community",
+      "Currency: Indian Rupee (₹). $1 ≈ ₹82-83 (rates vary)",
+      "Time Zone: Indian Standard Time (IST), UTC+5:30",
+      "Elevation: 116 meters (380 feet) above sea level",
+      "Climate: Subtropical - Hot summers, cool winters, monsoon Jul-Sep",
+      "UNESCO Status: Mahabodhi Temple designated World Heritage Site in 2002",
+      "Historical Significance: 2,500+ year continuous religious site",
+      "Annual Pilgrims: Over 1 million visitors from 100+ countries",
+      "Monasteries: 40+ representing different Buddhist nations and traditions",
+      "Religious Harmony: Hindu temples and Buddhist sites coexist peacefully",
+      "Economic Base: Pilgrimage tourism and religious services",
+      "Infrastructure: Improving rapidly with airport, better roads, and facilities",
+      "Cultural Diversity: Truly international spiritual community"
+    ]
+  },
+  resources: {
+    title: "Useful Resources & Links",
+    links: [
+      {
+        name: "Wikipedia - Bodh Gaya",
+        url: "https://en.wikipedia.org/wiki/Bodh_Gaya",
+        description: "Comprehensive historical and cultural information"
+      },
+      {
+        name: "Wikipedia - Mahabodhi Temple",
+        url: "https://en.wikipedia.org/wiki/Mahabodhi_Temple",
+        description: "Detailed architectural and historical documentation"
+      },
+      {
+        name: "UNESCO World Heritage",
+        url: "https://whc.unesco.org/en/list/1056/",
+        description: "Official UNESCO designation details and significance"
+      },
+      {
+        name: "Root Institute",
+        url: "https://rootinstitute.com",
+        description: "Meditation courses and retreat information"
+      },
+      {
+        name: "Tergar Monastery",
+        url: "https://tergar.org",
+        description: "Buddhist teachings and meditation programs"
+      },
+      {
+        name: "Bihar Tourism",
+        url: "https://tourism.bihar.gov.in",
+        description: "Official state tourism portal with travel information"
+      },
+      {
+        name: "Buddhist Tourism Circuit",
+        url: "Information about complete Buddhist pilgrimage route",
+        description: "Government initiative covering major Buddhist sites"
+      }
+    ],
+    recommendedBooks: [
+      "Old Path White Clouds - Thich Nhat Hanh (Buddha's life story)",
+      "Bodh Gaya: The Site of Enlightenment - Various authors",
+      "In the Buddha's Words - Bhikkhu Bodhi (Buddha's teachings compilation)",
+      "The Art of Happiness - Dalai Lama (Buddhist philosophy)",
+      "When Things Fall Apart - Pema Chödrön (Buddhist wisdom)",
+      "Zen Mind, Beginner's Mind - Shunryu Suzuki (Meditation guidance)"
+    ]
+  }
+},
+      2: {
+  placeName: "Rajgir",
+  subtitle: "Ancient Magadha Capital",
+  dates: "October 14, 2024",
+  destinations: "Vulture's Peak • Rajgir Hot Springs • Ajatashatru Fort • Bamboo Grove • Ropeway • Son Bhandar Caves • Glass Sky-Walk • Vishwa Shanti Stupa • Cyclopean Wall • Bimbisara Jail",
+  travel: "🚗 Bodh Gaya to Rajgir (78 km, 2 hours) • 🥾 Vulture Peak trek • ♨️ Hot springs • 🚡 Ropeway ride • 🌉 Glass bridge adventure • Ancient forts & caves",
+  description: "Journey to the ancient city of Rajgir, capital of the mighty Magadha Empire and witness to both Buddha and Mahavira's teachings. Trek up to Vulture's Peak, soak in hot springs, explore forts, caves, and walk the thrilling glass bridge suspended over the valley.",
+  wikipedia: "https://en.wikipedia.org/wiki/Rajgir",
+  attractions: [
+    {
+      id: "griddhakuta",
+      name: "Griddhakuta (Vulture's Peak)",
+      description: "Hill where Buddha delivered many important sermons, including the Lotus Sutra. A peaceful trekking spot offering panoramic views.",
+      historical: "Buddha meditated here for years and delivered over 100 sermons including the famous Lotus Sutra.",
+      travel: "📍 78 km from Bodh Gaya • 🥾 Trek: 1 hour • Morning recommended",
+      wikipedia: "https://en.wikipedia.org/wiki/Vulture_Peak",
+      details: {
+        sections: [
+          {
+            title: "📿 Sacred Discourses",
+            content: "Vulture's Peak is where Buddha delivered the famous Lotus Sutra and Prajnaparamita sutras over 8 years."
+          },
+          {
+            title: "🏔️ Trekking",
+            content: "Moderate trek to peak takes about 1 hour through scenic paths with meditation caves and panoramic views."
+          }
+        ],
+        timing: "Best Time: Early morning (6 AM) or late afternoon (4 PM) • Trek Duration: 2-3 hours round trip • Difficulty: Moderate"
+      }
+    },
+    {
+      id: "glassbridge",
+      name: "Rajgir Glass Sky-Walk",
+      description: "India’s first glass sky-walk bridge inside Rajgir Nature Safari. Offers thrilling views of valleys and hills.",
+      historical: "Part of the Rajgir Nature Safari project aimed at promoting eco-tourism and adventure activities.",
+      travel: "📍 Inside Rajgir Nature Safari • 🚌 15 min drive from Rajgir town center • Entry ticket required",
+      wikipedia: "https://en.wikipedia.org/wiki/Rajgir_Zoo_Safari",
+      details: {
+        sections: [
+          {
+            title: "🌉 Glass Bridge Experience",
+            content: "The bridge is 85–130 feet long and 6 feet wide, made of toughened glass, suspended ~250 feet high."
+          },
+          {
+            title: "🦌 Nature Safari",
+            content: "Visitors can explore wildlife zones, forest trails, and adventure activities in Rajgir Zoo Safari."
+          }
+        ],
+        timing: "Open: 9 AM – 5 PM • Best Time: Morning or late afternoon • Only 10–15 people allowed at a time"
+      }
+    },
+    {
+      id: "vishwashanti",
+      name: "Vishwa Shanti Stupa",
+      description: "A gleaming white Peace Pagoda built by the Japanese Buddhist order Nipponzan Myohoji on Ratnagiri Hill.",
+      historical: "Built in 1969, it symbolizes world peace and features four golden Buddha statues.",
+      travel: "📍 Ratnagiri Hill • 🚡 Accessible by Asia’s oldest ropeway",
+      wikipedia: "https://en.wikipedia.org/wiki/Vishwa_Shanti_Stupa,_Rajgir",
+      details: {
+        sections: [
+          {
+            title: "🕊️ Peace Monument",
+            content: "One of the 80 Peace Pagodas worldwide promoting non-violence and harmony."
+          },
+          {
+            title: "🚡 Ropeway Ride",
+            content: "The Rajgir ropeway is the oldest in India, offering scenic rides to the stupa."
+          }
+        ],
+        timing: "Open: 9 AM – 5 PM • Best during sunrise or sunset"
+      }
+    },
+    {
+      id: "sonbhandar",
+      name: "Son Bhandar Caves",
+      description: "Ancient rock-cut caves believed to be treasure chambers of King Bimbisara.",
+      historical: "Dating back to 3rd–4th century CE, Jain inscriptions inside suggest Jain connections.",
+      travel: "📍 Vaibhava Hill • Short hike from Rajgir town",
+      wikipedia: "https://en.wikipedia.org/wiki/Son_Bhandar_caves",
+      details: {
+        sections: [
+          {
+            title: "🏛️ Rock Architecture",
+            content: "Caves carved into rock with polished walls similar to Mauryan caves in Barabar."
+          },
+          {
+            title: "💰 Treasure Legend",
+            content: "Locals believe a hidden passage from the caves leads to treasures of Bimbisara."
+          }
+        ],
+        timing: "Open: 8 AM – 6 PM • Duration: 30–45 mins visit"
+      }
+    },
+    {
+      id: "ajatashatru",
+      name: "Ajatashatru Fort",
+      description: "Ruins of a 5th-century BCE fort built by Ajatashatru, ruler of Magadha.",
+      historical: "He imprisoned his father King Bimbisara here during the Buddha’s lifetime.",
+      travel: "📍 2 km from Rajgir town center",
+      wikipedia: "https://en.wikipedia.org/wiki/Ajatashatru",
+      details: {
+        sections: [
+          {
+            title: "🏰 Historic Legacy",
+            content: "Massive fortification walls and moat ruins still visible today."
+          },
+          {
+            title: "📜 Buddhist Connection",
+            content: "Site of the First Buddhist Council after Buddha’s parinirvana."
+          }
+        ],
+        timing: "Open: Sunrise to Sunset • Duration: 45 mins visit"
+      }
+    },
+    {
+      id: "bimbisarjail",
+      name: "Bimbisara’s Jail",
+      description: "The stone prison where King Bimbisara was confined by his son Ajatashatru.",
+      historical: "From here, Bimbisara could see Vulture’s Peak, where Buddha stayed.",
+      travel: "📍 Near Maniyar Math, Rajgir",
+      wikipedia: "https://en.wikipedia.org/wiki/Bimbisara",
+      details: {
+        sections: [
+          {
+            title: "🪨 Historical Site",
+            content: "Ruins include thick stone walls and remnants of prison cells."
+          },
+          {
+            title: "👁️ Viewpoint",
+            content: "Legend says Bimbisara chose this jail so he could still see Buddha at Griddhakuta."
+          }
+        ],
+        timing: "Open: Sunrise to Sunset • Duration: 30 mins visit"
+      }
+    },
+    {
+      id: "cyclopeanwall",
+      name: "Cyclopean Wall",
+      description: "Massive stone wall encircling ancient Rajgir, stretching ~40 km.",
+      historical: "Built during the Mauryan period (pre-4th century BCE), it’s one of India’s oldest surviving fortifications.",
+      travel: "📍 Surrounding Rajgir hills",
+      wikipedia: "https://en.wikipedia.org/wiki/Cyclopean_Wall",
+      details: {
+        sections: [
+          {
+            title: "🪨 Megalithic Architecture",
+            content: "Constructed from large undressed stones fitted without mortar."
+          },
+          {
+            title: "🏯 Ancient Capital",
+            content: "Protected the ancient Magadha capital and is still visible in fragments."
+          }
+        ],
+        timing: "Open: Always • Best explored with local guide • Trekking involved"
+      }
+    }
+  ]
+},
+      3: {
+    placeName: "Nalanda",
+    subtitle: "Ancient Seat of Learning",
+    dates: "October 15, 2024",
+    destinations: "Nalanda University Ruins • Archaeological Museum • Hiuen Tsang Memorial • Pawapuri Jal Mandir • Kundalpur",
+    travel: "🚗 Rajgir to Nalanda (15 km, 25 minutes) • 📚 World's first university • UNESCO World Heritage site",
+    description: "Step back in time at Nalanda, the world's first great residential university that flourished from the 5th to 12th century CE. Walk through the ruins where over 10,000 students studied Buddhist philosophy, astronomy, mathematics, and medicine, attracting scholars from across Asia.",
+    wikipedia: "https://en.wikipedia.org/wiki/Nalanda",
+    attractions: [
+      {
+        id: "nalandauniv",
+        name: "Nalanda University Ruins",
+        description: "The world's first residential university (5th–12th century CE) with over 10,000 students. Renowned globally for Buddhist studies, philosophy, medicine, and astronomy.",
+        historical: "Founded in the 5th century CE by Kumaragupta I of the Gupta dynasty. It thrived under Harsha and the Pala kings before being destroyed in the 12th century by Bakhtiyar Khilji. Known as the 'Oxford of the East'.",
+        travel: "📍 15 km from Rajgir • 📚 Half-day visit recommended • Duration: 3–4 hours",
+        wikipedia: "https://en.wikipedia.org/wiki/Nalanda",
+        details: {
+          sections: [
+            {
+              title: "📚 Academic Excellence",
+              content: "The university attracted scholars from China, Korea, Japan, Tibet, and Central Asia. Admission was tough — only 30% of applicants were accepted. Curriculum included philosophy, grammar, logic, medicine, mathematics, astronomy, and fine arts."
+            },
+            {
+              title: "🏛️ Architecture",
+              content: "The complex spanned 14 hectares with monasteries, temples, lecture halls, and meditation spaces. The famed library Dharmaganja had three huge buildings: Ratnasagara, Ratnaranjaka, and Ratnodadhi, housing millions of manuscripts."
+            }
+          ],
+          timing: "Entry: ₹25 Indians, ₹300 foreigners • Hours: 9 AM–6 PM • Guided tours and audio guides available"
+        }
+      },
+      {
+        id: "museum",
+        name: "Nalanda Archaeological Museum",
+        description: "Established in 1917, the museum houses artifacts excavated from Nalanda ruins.",
+        historical: "Contains rare Buddhist and Hindu sculptures, bronzes, seals, terracotta artifacts, and manuscripts.",
+        travel: "📍 Near Nalanda Ruins site",
+        wikipedia: "https://en.wikipedia.org/wiki/Nalanda_Museum",
+        details: {
+          sections: [
+            {
+              title: "🏺 Collections",
+              content: "Over 13,000 artifacts including stone, bronze, stucco, and terracotta sculptures dating from 5th–12th century CE."
+            },
+            {
+              title: "🌟 Highlights",
+              content: "Famous for Buddha and Bodhisattva images, Avalokitesvara statues, and Jain artifacts."
+            }
+          ],
+          timing: "Hours: 10 AM–5 PM (closed Friday) • Entry fee: ₹15"
+        }
+      },
+      {
+        id: "hiuentsang",
+        name: "Hiuen Tsang Memorial Hall",
+        description: "A memorial dedicated to the great Chinese scholar-monk Xuanzang (Hiuen Tsang) who studied and taught at Nalanda.",
+        historical: "Xuanzang stayed at Nalanda in the 7th century CE, studied Buddhist philosophy, and carried back manuscripts to China.",
+        travel: "📍 Nalanda town • 2 km from ruins",
+        wikipedia: "https://en.wikipedia.org/wiki/Xuanzang",
+        details: {
+          sections: [
+            {
+              title: "📜 Scholar’s Journey",
+              content: "Xuanzang studied Yogachara and Buddhist logic at Nalanda under Silabhadra. His records are primary sources about Indian education and culture of that era."
+            },
+            {
+              title: "🏯 Memorial",
+              content: "Built by the Chinese government in 1957 to honor cultural ties between India and China."
+            }
+          ],
+          timing: "Hours: 9 AM–5 PM • No entry fee"
+        }
+      },
+      {
+        id: "pawapuri",
+        name: "Pawapuri Jal Mandir",
+        description: "A sacred Jain temple in the middle of a lotus pond, marking the site where Lord Mahavira attained nirvana.",
+        historical: "Mahavira, the 24th Tirthankara of Jainism, attained liberation here in 527 BCE.",
+        travel: "📍 12 km from Nalanda • 🕉️ Pilgrimage site",
+        wikipedia: "https://en.wikipedia.org/wiki/Pawapuri",
+        details: {
+          sections: [
+            {
+              title: "🌸 Sacred Lotus Pond",
+              content: "The temple is built on a marble platform in the center of a large pond filled with lotus flowers."
+            },
+            {
+              title: "🕉️ Jain Significance",
+              content: "Pilgrims believe visiting Pawapuri absolves sins and grants spiritual peace."
+            }
+          ],
+          timing: "Open: 6 AM–8 PM • Duration: 1–2 hours"
+        }
+      },
+      {
+        id: "kundalpur",
+        name: "Kundalpur",
+        description: "Birthplace of Lord Mahavira, the 24th Jain Tirthankara.",
+        historical: "Houses a grand temple complex with idols of Mahavira and other Tirthankaras.",
+        travel: "📍 2 km from Nalanda ruins",
+        wikipedia: "https://en.wikipedia.org/wiki/Kundalpur,_Nalanda",
+        details: {
+          sections: [
+            {
+              title: "🕍 Temple Complex",
+              content: "Large complex of white marble temples dedicated to Jain Tirthankaras."
+            },
+            {
+              title: "🌿 Peaceful Setting",
+              content: "Set amidst tranquil countryside, making it a serene spiritual stop."
+            }
+          ],
+          timing: "Open: 6 AM–7 PM • Duration: 1–2 hours"
+        }
+      }
+    ]
+  },
+  4: {
+    placeName: "Deoghar",
+    subtitle: "Abode of the Gods",
+    dates: "October 17–18, 2024",
+    destinations: "Baidyanath Jyotirlinga • Naulakha Mandir • Tapovan Caves • Basukinath Temple • Rikhia Ashram • Trikuta Parvat",
+    travel: "🚗 Nalanda to Deoghar (260 km, 5.5 hours) • 🕉️ 3-day Jyotirlinga pilgrimage • Spiritual immersion",
+    description: "Immerse yourself in Deoghar, one of India’s most sacred towns. Home to Baidyanath Jyotirlinga, one of the twelve Jyotirlingas of Lord Shiva, it is a place of immense spiritual energy, legendary temples, and serene hills.",
+    wikipedia: "https://en.wikipedia.org/wiki/Deoghar",
+    attractions: [
+      {
+        id: "baidyanath",
+        name: "Baidyanath Jyotirlinga Temple",
+        description: "One of the 12 sacred Jyotirlingas dedicated to Lord Shiva. Known as 'Vaidyanath' (Lord of Physicians) for healing powers.",
+        historical: "Believed to cure diseases and grant moksha. According to legend, Ravana offered his heads here to please Shiva.",
+        travel: "📍 In Deoghar town center • 🕉️ Darshan essential",
+        wikipedia: "https://en.wikipedia.org/wiki/Baidyanath_Temple",
+        details: {
+          sections: [
+            {
+              title: "🕉️ Sacred Jyotirlinga",
+              content: "Temple houses one of 12 sacred Jyotirlingas, considered self-manifested. Ravana is said to have offered his ten heads here to please Lord Shiva."
+            },
+            {
+              title: "🌊 Shravan Mela",
+              content: "During Shravan (July–August), millions of devotees called 'Kanwariyas' carry holy Ganga water from Sultanganj, walking 105 km barefoot to offer here."
+            }
+          ],
+          timing: "Darshan: 4 AM–9 PM • Maha Aarti: 7 PM • VIP Darshan available"
+        }
+      },
+      {
+        id: "naulakha",
+        name: "Naulakha Mandir",
+        description: "Famous temple dedicated to Radha and Krishna, built with an investment of nine lakh rupees in 1940.",
+        historical: "Built by the queen of Pathuria Ghat, Calcutta, with design similar to Belur Math temples.",
+        travel: "📍 1.5 km from Baidyanath Temple",
+        wikipedia: "https://en.wikipedia.org/wiki/Naulakha_Temple",
+        details: {
+          sections: [
+            {
+              title: "🏛️ Architecture",
+              content: "Temple rises 146 feet high, with striking white marble structure."
+            },
+            {
+              title: "🙏 Spiritual Significance",
+              content: "Dedicated to Radha-Krishna, attracts devotees from across India."
+            }
+          ],
+          timing: "Open: 6 AM–8 PM • Duration: 1 hour"
+        }
+      },
+      {
+        id: "tapovan",
+        name: "Tapovan Caves and Temple",
+        description: "Cluster of caves and a temple of Lord Shiva atop a hill, associated with Sage Valmiki and Ravana’s penance.",
+        historical: "Believed that Ravana meditated here to gain Shiva’s blessings.",
+        travel: "📍 10 km from Deoghar town • Short trek required",
+        wikipedia: "https://en.wikipedia.org/wiki/Tapovan_Mahabihar",
+        details: {
+          sections: [
+            {
+              title: "🪨 Cave Temples",
+              content: "Natural caves with lingams, carvings, and meditation spots."
+            },
+            {
+              title: "🏞️ Scenic View",
+              content: "Offers panoramic views of Deoghar town and surrounding hills."
+            }
+          ],
+          timing: "Open: 6 AM–6 PM • Best in morning"
+        }
+      },
+      {
+        id: "basukinath",
+        name: "Basukinath Temple",
+        description: "Second most important temple after Baidyanath in the region, dedicated to Lord Shiva.",
+        historical: "Considered the court of Baba Baidyanath where daily rituals are completed.",
+        travel: "📍 43 km from Deoghar town",
+        wikipedia: "https://en.wikipedia.org/wiki/Basukinath",
+        details: {
+          sections: [
+            {
+              title: "🕉️ Sacred Pair",
+              content: "Devotees believe darshan at Baidyanath is incomplete without visiting Basukinath."
+            },
+            {
+              title: "🌸 Pilgrimage",
+              content: "Attracts pilgrims throughout the year, especially during Shravan."
+            }
+          ],
+          timing: "Open: 6 AM–8 PM • Duration: 1 hour"
+        }
+      },
+      {
+        id: "rikhia",
+        name: "Rikhia Ashram",
+        description: "Spiritual retreat founded by Swami Satyananda Saraswati, dedicated to yoga, meditation, and community service.",
+        historical: "Established in 1989, focuses on spiritual upliftment and rural development.",
+        travel: "📍 12 km from Deoghar",
+        wikipedia: "https://www.rikhiapeeth.in",
+        details: {
+          sections: [
+            {
+              title: "🧘 Yoga & Meditation",
+              content: "Ashram hosts satsangs, yoga sessions, and meditation retreats."
+            },
+            {
+              title: "🌱 Community Service",
+              content: "Engages in educational, health, and cultural upliftment of local villagers."
+            }
+          ],
+          timing: "Open: 6 AM–7 PM • Advance permission needed for retreats"
+        }
+      },
+      {
+        id: "trikuta",
+        name: "Trikuta Parvat",
+        description: "Hill with three peaks, believed to be the abode of various gods and goddesses.",
+        historical: "Associated with Hindu mythology; believed to be the site where Ravana worshipped Shiva.",
+        travel: "📍 10 km from Deoghar • Ropeway to summit available",
+        wikipedia: "https://en.wikipedia.org/wiki/Trikut_Hill",
+        details: {
+          sections: [
+            {
+              title: "🚡 Ropeway Adventure",
+              content: "Cable car ride to the top offers thrilling views of forests and Deoghar plains."
+            },
+            {
+              title: "🌄 Spiritual Significance",
+              content: "Peaks house temples dedicated to Shiva, Vishnu, and Brahma."
+            }
+          ],
+          timing: "Open: 8 AM–5 PM • Duration: 2–3 hours including ropeway"
+        }
+      }
+    ]
+  },
+      5: {
+  placeName: "Varanasi",
+  subtitle: "Eternal City of Light",
+  dates: "October 19-21, 2024",
+  destinations: "Kashi Vishwanath Temple • Dashashwamedh Ghat Evening Aarti • Sarnath Deer Park • Manikarnika Ghat • Assi Ghat Sunrise • Banaras Hindu University (BHU) • Ramnagar Fort",
+  travel: "🚂 Evening train to Varanasi • 🔥 3 days spiritual immersion • Ganges boat rides • Ancient city of light",
+  description: "Spend three transformative days in Varanasi, the spiritual capital of India and one of the world's oldest continuously inhabited cities. Walk along the ghats where sages have meditated for over 3,000 years. Witness evening Ganga Aarti, explore ancient temples, Buddhist heritage, and the living traditions of this sacred city.",
+  wikipedia: "https://en.wikipedia.org/wiki/Varanasi",
+  attractions: [
+    {
+      id: "kashivishwanath",
+      name: "Kashi Vishwanath Temple",
+      description: "One of the 12 Jyotirlingas of Lord Shiva, this golden temple is the spiritual heart of Varanasi. Recently renovated with the grand Kashi Vishwanath Corridor connecting the temple to the Ganges.",
+      historical: "The temple has been destroyed and rebuilt several times. The current structure was built by Ahilya Bai Holkar in 1780, with the golden spire donated by Maharaja Ranjit Singh of Punjab in 1839.",
+      travel: "📍 Walking distance from Dashashwamedh Ghat • 🚶‍♂️ Morning darshan recommended • New corridor access available",
+      wikipedia: "https://en.wikipedia.org/wiki/Kashi_Vishwanath_Temple",
+      details: {
+        sections: [
+          {
+            title: "🏛️ Golden Architecture",
+            content: "The temple’s golden spire is plated with 800 kg of pure gold. The new Kashi Vishwanath Corridor, inaugurated in 2021, spans 5 hectares, creating a direct pathway between the temple and the Ganga, lined with 24 grand buildings."
+          },
+          {
+            title: "🕉️ Spiritual Significance",
+            content: "Considered the most sacred Jyotirlinga, devotees believe that dying in Varanasi grants moksha (liberation). Daily rituals include Mangala Aarti at 3 AM, Bhog Aarti at noon, and Shringar Aarti in the evening."
+          }
+        ],
+        timing: "Darshan: 3 AM – 11 PM • Online Booking: Available • VIP Darshan: ₹300 • Corridor open till late night"
+      }
+    },
+    {
+      id: "dashashwamedh",
+      name: "Dashashwamedh Ghat - Evening Ganga Aarti",
+      description: "The most spectacular and iconic ghat of Varanasi, famous for its grand evening Ganga Aarti where priests with lamps, incense, and chants create a mesmerizing spiritual atmosphere.",
+      historical: "Legend says Lord Brahma performed 10 Ashwamedha (horse) sacrifices here, giving the ghat its name.",
+      travel: "📍 Central Varanasi • 🚶‍♂️ Best reached on foot or by boat • Evening program",
+      wikipedia: "https://en.wikipedia.org/wiki/Dashashwamedh_Ghat",
+      details: {
+        sections: [
+          {
+            title: "🔥 Evening Aarti",
+            content: "Every evening at 6:45 PM, priests in saffron robes perform synchronized rituals with brass lamps, blowing conch shells, and chanting mantras. Thousands of devotees and tourists gather to witness this grand spectacle."
+          },
+          {
+            title: "🚤 Boat Experience",
+            content: "Watching the Aarti from a boat in the Ganges gives a magical panoramic view. Floating lamps (diyas) released by devotees light up the river, symbolizing prayers to Mother Ganga."
+          }
+        ],
+        timing: "Morning Aarti: 4:30 AM (Mangala Aarti) • Evening Aarti: 6:45–7:30 PM • Best View: From boat • Arrive 1 hour early for good seating"
+      }
+    },
+    {
+      id: "sarnath",
+      name: "Sarnath - Deer Park",
+      description: "Sacred Buddhist site where Lord Buddha delivered his first sermon after attaining enlightenment in Bodh Gaya. Major pilgrimage site with stupas, monasteries, and museum.",
+      historical: "In 528 BCE, Buddha delivered his first sermon here, known as the Dhammacakkappavattana Sutta, to his five disciples, forming the first Sangha. Emperor Ashoka later built stupas and pillars here.",
+      travel: "📍 12 km from Varanasi • 🚗 30 min drive • Half-day excursion",
+      wikipedia: "https://en.wikipedia.org/wiki/Sarnath",
+      details: {
+        sections: [
+          {
+            title: "📿 First Sermon",
+            content: "Buddha’s sermon here marked the 'Turning of the Wheel of Dharma'. This sacred discourse laid the foundation of Buddhism."
+          },
+          {
+            title: "🏛️ Dhamek Stupa & Ashokan Pillar",
+            content: "The Dhamek Stupa, 43.6 m high and 28 m in diameter, marks the spot of Buddha’s sermon. The Ashokan pillar nearby once bore the Lion Capital, now India’s national emblem."
+          }
+        ],
+        timing: "Site: 6 AM – 6 PM • Museum: 9 AM – 5 PM (closed Friday) • Entry: ₹25 Indians, ₹300 foreigners • Best Visit: Morning till noon"
+      }
+    },
+    {
+      id: "manikarnika",
+      name: "Manikarnika Ghat",
+      description: "The most sacred cremation ground of Varanasi, symbolizing the eternal cycle of life and death. Considered the gateway to moksha.",
+      historical: "According to legend, Goddess Parvati’s earring (Manikarnika) fell here while bathing with Lord Shiva. It has been a cremation site for thousands of years.",
+      travel: "📍 Near Vishwanath Gali • 🚶‍♂️ Accessible only by foot or boat",
+      wikipedia: "https://en.wikipedia.org/wiki/Manikarnika_Ghat",
+      details: {
+        sections: [
+          {
+            title: "🔥 Cremation Traditions",
+            content: "Cremations take place 24x7. Hindus believe that being cremated at Manikarnika leads directly to moksha, liberation from the cycle of rebirth."
+          },
+          {
+            title: "⚖️ Spiritual Meaning",
+            content: "Shiva is said to whisper the Taraka Mantra into the ears of the dying here. The ghat represents the acceptance of life’s impermanence."
+          }
+        ],
+        timing: "Open 24 hours • Photography of cremations discouraged • Best View: From boat in evening"
+      }
+    },
+    {
+      id: "assi",
+      name: "Assi Ghat",
+      description: "Southernmost ghat of Varanasi, famous for Subah-e-Banaras (Morning of Banaras) program featuring sunrise yoga, music, and rituals.",
+      historical: "Legend says Goddess Durga threw her sword (Assi) here after slaying demons Shumbha and Nishumbha.",
+      travel: "📍 4 km from Kashi Vishwanath • 🚗 15 min drive",
+      wikipedia: "https://en.wikipedia.org/wiki/Assi_Ghat",
+      details: {
+        sections: [
+          {
+            title: "🌅 Sunrise Magic",
+            content: "Every morning, hundreds gather for yoga sessions, classical music performances, and arti at sunrise. A peaceful, less crowded ghat compared to Dashashwamedh."
+          },
+          {
+            title: "🚤 Ganga Boat Ride",
+            content: "Perfect starting point for early morning boat rides along the Ganges, covering all major ghats in golden morning light."
+          }
+        ],
+        timing: "Subah-e-Banaras: 5 AM – 7 AM daily • Best Visit: Sunrise • Evening arti also held"
+      }
+    },
+    {
+      id: "bhu",
+      name: "Banaras Hindu University (BHU)",
+      description: "Asia’s largest residential university, founded by Pandit Madan Mohan Malaviya in 1916. Campus houses the New Vishwanath Temple.",
+      historical: "BHU has been a hub of Indian independence movement and cultural renaissance. The New Vishwanath Temple on campus is modeled after the original Kashi Vishwanath Temple.",
+      travel: "📍 5 km from Assi Ghat • 🚗 20 mins",
+      wikipedia: "https://en.wikipedia.org/wiki/Banaras_Hindu_University",
+      details: {
+        sections: [
+          {
+            title: "🏛️ Campus Tour",
+            content: "Spread across 1,300 acres with iconic Bharat Kala Bhavan Museum, central library, and cultural centers."
+          },
+          {
+            title: "🕉️ New Vishwanath Temple",
+            content: "Built by Birla family in 1960s, the temple is made of white marble with tall spires and beautiful inscriptions of Hindu scriptures."
+          }
+        ],
+        timing: "Open: 10 AM – 5 PM • Museum Entry: ₹20 • Best Visit: Daytime"
+      }
+    },
+    {
+      id: "ramnagar",
+      name: "Ramnagar Fort & Museum",
+      description: "18th-century sandstone fort-palace of Kashi Naresh (King of Varanasi), located across the Ganges.",
+      historical: "Built in 1750 by Raja Balwant Singh, still serves as residence of Kashi royal family. Known for its annual Ramnagar Ramlila, one of the world’s longest theatrical performances.",
+      travel: "📍 14 km from city center • 🚗 30 min drive",
+      wikipedia: "https://en.wikipedia.org/wiki/Ramnagar_Fort",
+      details: {
+        sections: [
+          {
+            title: "🏰 Fort Architecture",
+            content: "Built in Mughal-style red sandstone with carved balconies, courtyards, and a riverside setting offering stunning Ganga views."
+          },
+          {
+            title: "🏺 Museum Treasures",
+            content: "Museum houses royal artifacts including vintage cars, elephant saddles, armory, manuscripts, and ivory works."
+          }
+        ],
+        timing: "Hours: 10 AM – 5 PM • Entry: ₹50 Indians, ₹200 foreigners • Closed on Holi & Diwali"
+      }
+    }
+  ]
+},
+      6: {
+  placeName: "Ayodhya",
+  subtitle: "Birthplace of Lord Rama",
+  dates: "October 21-22, 2024",
+  destinations: "Ram Janmabhoomi Temple • Hanuman Garhi • Kanak Bhawan • Nageshwarnath Temple • Saryu River Aarti • Treta Ke Thakur • Guptar Ghat • Dasharath Mahal",
+  travel: "🚗 Evening arrival from Varanasi (6 PM) • 🏛️ Full day temple circuit Oct 22 • 8 PM departure to Mathura",
+  description: "Ayodhya, one of the seven Mokshapuris (sacred cities of liberation), is revered as the birthplace of Lord Rama. Nestled on the banks of the holy Saryu River, this city is intertwined with the Ramayana and Hindu devotion. In 2024, the grand Ram Mandir was inaugurated, making Ayodhya the most important pilgrimage destination for devotees of Lord Rama.",
+  attractions: [
+    {
+      id: "ramjanmabhoomi",
+      name: "Ram Janmabhoomi Temple",
+      description: "The newly constructed temple marking the birthplace of Lord Rama, a grand structure of pink sandstone showcasing Nagara-style architecture.",
+      historical: "Inaugurated in January 2024, it stands on the sacred land believed to be Rama’s birthplace for millennia. The site has been a center of devotion, conflict, and faith for centuries.",
+      travel: "📍 Central Ayodhya • 🏛️ Priority early morning visit • Online booking required",
+      details: {
+        sections: [
+          { title: "🏛️ Temple Architecture", content: "Three-storied temple in Nagara style with 360 pillars and 70 acres of temple grounds. Intricate carvings narrate Ramayana episodes." },
+          { title: "👶 Sanctum Sanctorum", content: "Main sanctum houses Ram Lalla (infant Rama), installed in a temperature-controlled crystal cradle." }
+        ],
+        timing: "Darshan: 5 AM–10 PM • Best: Early morning"
+      }
+    },
+    {
+      id: "hanumangarhi",
+      name: "Hanuman Garhi",
+      description: "Fortress-style temple dedicated to Hanuman, protector of Ayodhya.",
+      historical: "Tradition says Hanuman resided here safeguarding Rama’s city. Built in 10th century AD.",
+      travel: "📍 1 km from Ram Mandir • ⛰️ 76 steps climb",
+      details: {
+        sections: [
+          { title: "🙏 Bal Hanuman", content: "Idol of child Hanuman cradling infant Rama is worshipped here." }
+        ],
+        timing: "5 AM–10 PM"
+      }
+    },
+    {
+      id: "kanakbhawan",
+      name: "Kanak Bhawan",
+      description: "Temple gifted to Sita by Queen Kaikeyi after her marriage with Rama.",
+      historical: "Known as ‘Golden Palace’, believed to be constructed by Vikramaditya and renovated in 19th century by Queen Vrishbhanu Kunwari.",
+      travel: "📍 Near Hanuman Garhi • 🚶‍♂️ 10 min walk",
+      details: {
+        sections: [
+          { title: "💍 Rama-Sita Shrine", content: "Idols of Rama and Sita adorned with gold crowns and ornaments." }
+        ],
+        timing: "8 AM–12 PM, 4 PM–9 PM"
+      }
+    },
+    {
+      id: "saryuaarti",
+      name: "Saryu River Aarti",
+      description: "Evening aarti on the ghats of sacred Saryu River, echoing the devotion of Ayodhya.",
+      historical: "The river is associated with King Dasharatha, Rama, and many sages of the Ramayana.",
+      travel: "📍 Naya Ghat • 🌅 6:30 PM",
+      details: {
+        sections: [
+          { title: "🌅 Divine Atmosphere", content: "Priests perform synchronized rituals with lamps and conch sounds, reflecting on the river." }
+        ],
+        timing: "Daily at sunset"
+      }
+    },
+    {
+      id: "tretake",
+      name: "Treta Ke Thakur",
+      description: "Temple with black stone idols of Rama, Sita, Lakshmana, and Hanuman.",
+      historical: "Believed to mark the spot where Rama performed Ashwamedha Yajna after returning from Lanka.",
+      travel: "📍 Near Naya Ghat",
+      details: {
+        sections: [
+          { title: "🪔 Rare Idols", content: "Idols are said to date back to the time of King Vikramaditya." }
+        ],
+        timing: "Special darshan on Kartik Poornima"
+      }
+    }
+  ]
+},
+
+7: {
+  placeName: "Mathura-Vrindavan",
+  subtitle: "Land of Krishna's Divine Play",
+  dates: "October 23-25, 2024",
+  destinations: "Krishna Janmabhoomi • Banke Bihari Temple • ISKCON Vrindavan • Prem Mandir • Govardhan Hill • Nidhivan • Barsana • Radha Kund • Seva Kunj • Vishram Ghat",
+  travel: "🚂 Late evening train to Mathura (arrival Oct 22 night) • 🎭 4 days Krishna immersion • Daily temple circuits & excursions",
+  description: "Mathura, the birthplace of Krishna, and Vrindavan, the playground of his divine leelas, form the spiritual heartland of Krishna devotion. From the prison cell of Kansa to the mystic groves of Vrindavan, every corner echoes with Krishna’s divine presence.",
+  attractions: [
+    {
+      id: "krishnajanmabhoomi",
+      name: "Krishna Janmabhoomi Temple",
+      description: "Sacred birthplace of Krishna, with the underground prison cell of Kansa preserved as a shrine.",
+      historical: "Krishna was born here over 5000 years ago. The site has been reconstructed multiple times through history.",
+      travel: "📍 Central Mathura • 🏛️ Full morning visit",
+      details: {
+        sections: [
+          { title: "🏛️ Janmasthan", content: "The prison cell where Vasudeva and Devaki were held, now sanctified with Krishna’s idol." }
+        ],
+        timing: "5:30 AM–12 PM, 4 PM–9:30 PM"
+      }
+    },
+    {
+      id: "bankebihari",
+      name: "Banke Bihari Temple",
+      description: "Most celebrated temple in Vrindavan, with unique darshan style.",
+      historical: "Established in 1864 by Swami Haridas, guru of Tansen. Houses self-manifested image of Krishna.",
+      travel: "📍 Vrindavan • 🎭 Darshan with curtain tradition",
+      details: {
+        sections: [
+          { title: "🎭 Curtain Darshan", content: "Curtains are drawn every few minutes to shield devotees from being lost in Krishna’s beauty." }
+        ],
+        timing: "7:45 AM–12 PM, 5:30 PM–9:30 PM"
+      }
+    },
+    {
+      id: "premmandir",
+      name: "Prem Mandir",
+      description: "White marble temple glowing with LED illumination, depicting Krishna’s leelas.",
+      historical: "Constructed in 2012 by Jagadguru Kripalu Parishat.",
+      travel: "📍 Vrindavan • ✨ Evening visit",
+      details: {
+        sections: [
+          { title: "✨ Light Show", content: "Colorful LED show narrating Krishna-Radha stories in music and visuals." }
+        ],
+        timing: "5:30 AM–12 PM, 4:30 PM–8:30 PM • Best: 7:30 PM"
+      }
+    },
+    {
+      id: "govardhan",
+      name: "Govardhan Hill",
+      description: "Sacred hill lifted by Krishna to protect Gokul residents from Indra’s wrath.",
+      historical: "Govardhan Parikrama (21 km circumambulation) is a highly revered ritual.",
+      travel: "📍 25 km from Mathura • 🚗 Half-day trip",
+      details: {
+        sections: [
+          { title: "🥾 Parikrama", content: "Devotees walk barefoot chanting ‘Radhe Radhe’. Mini parikrama (7 km) also available." }
+        ],
+        timing: "Anytime • Best in Kartik month"
+      }
+    },
+    {
+      id: "nidhivan",
+      name: "Nidhivan",
+      description: "Mysterious grove where Krishna is believed to perform Raas Leela with gopis every night.",
+      historical: "Trees here are intertwined and bent as if dancing. Local lore forbids anyone staying here after dusk.",
+      travel: "📍 Vrindavan • 🕯️ Evening visit",
+      details: {
+        sections: [
+          { title: "🌌 Mystical Belief", content: "Priests say the grove transforms into Raas Mandal nightly, and no one survives who stays back at night." }
+        ],
+        timing: "6 AM–7 PM • Forbidden after sunset"
+      }
+    },
+    {
+      id: "barsana",
+      name: "Barsana (Radha’s Birthplace)",
+      description: "Sacred village where Radha spent her childhood, famous for Lathmar Holi.",
+      historical: "Radha Rani Temple on top of Bhanugarh Hill marks her sacred abode.",
+      travel: "📍 45 km from Mathura • 🚗 Half-day trip",
+      details: {
+        sections: [
+          { title: "🎉 Lathmar Holi", content: "Unique festival where women playfully beat men with sticks in memory of Radha-Krishna’s leela." }
+        ],
+        timing: "Best: Holi Festival (Feb-March)"
+      }
+    },
+    {
+      id: "radhakund",
+      name: "Radha Kund & Shyam Kund",
+      description: "Twin ponds considered most sacred in Vrindavan, associated with Radha and Krishna’s love.",
+      historical: "Said to have been created by Radha and Krishna themselves after the Govardhan episode.",
+      travel: "📍 Near Govardhan Hill • 🌙 Evening prayer spot",
+      details: {
+        sections: [
+          { title: "💧 Holy Dip", content: "Bathing here during midnight on Kartik Poornima is believed to grant liberation." }
+        ],
+        timing: "Open all day • Best: Kartik Poornima night"
+      }
+    },
+    {
+      id: "vishramghat",
+      name: "Vishram Ghat (Mathura)",
+      description: "Sacred ghat where Krishna rested after killing Kansa.",
+      historical: "Starting point of Mathura’s 25 ghats, each linked to Krishna legends.",
+      travel: "📍 Mathura city • 🚣 Evening boat ride",
+      details: {
+        sections: [
+          { title: "🪔 Evening Aarti", content: "Devotional aarti with hundreds of lamps floating on Yamuna." }
+        ],
+        timing: "6 PM daily"
+      }
+    }
+  ]
+}
+
+    };
+
+    function saveProgress() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          checkboxStates, completedAttractions, totalAttractions,
+          lastUpdated: new Date().toISOString()
+        }));
+      } catch (e) {}
+    }
+
+    function loadProgress() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const progress = JSON.parse(saved);
+          checkboxStates = progress.checkboxStates || {};
+          return true;
+        }
+      } catch (e) {}
+      return false;
+    }
+
+    function clearProgress() {
+      localStorage.removeItem(STORAGE_KEY);
+      checkboxStates = {};
+      completedAttractions = 0;
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+        cb.closest('.attraction-card')?.classList.remove('visited');
+      });
+      updateProgress();
+      showNotification('Progress cleared!');
+    }
+
+    function showNotification(message) {
+      const notif = document.createElement('div');
+      notif.style.cssText = 'position:fixed;top:2rem;right:2rem;background:var(--success);color:white;padding:1rem 1.5rem;border-radius:var(--border-radius-lg);box-shadow:var(--shadow-xl);z-index:10000;transform:translateX(100%);transition:transform 0.3s';
+      notif.textContent = message;
+      document.body.appendChild(notif);
+      requestAnimationFrame(() => notif.style.transform = 'translateX(0)');
+      setTimeout(() => {
+        notif.style.transform = 'translateX(100%)';
+        setTimeout(() => notif.remove(), 300);
+      }, 3000);
+    }
+
+    function selectDay(dayNumber, event) {
+      if (event.currentTarget.classList.contains('selected')) return;
+      document.querySelectorAll('.day-card').forEach(c => {
+        c.classList.remove('selected');
+        c.style.pointerEvents = 'none';
+      });
+      event.currentTarget.classList.add('selected');
+      setTimeout(() => {
+        currentDay = dayNumber;
+        showSelectedDayContent();
+      }, 600);
+    }
+
+    function showSelectedDayContent() {
+      const dayPage = document.getElementById('daySelectionPage');
+      const mainContent = document.getElementById('mainContent');
+      dayPage.style.transform = 'translateX(-100%)';
+      dayPage.style.opacity = '0';
+      setTimeout(() => {
+        dayPage.style.display = 'none';
+        mainContent.style.display = 'block';
+        mainContent.style.transform = 'translateX(0)';
+        mainContent.style.opacity = '1';
+        loadDayContent(currentDay);
+        updateNavigation();
+        setupSearch();
+        setupScrollEffects();
+      }, 300);
+    }
+
+    function loadDayContent(dayNumber) {
+      const dayInfo = dayData[dayNumber];
+      if (!dayInfo) return;
+      document.getElementById('currentDayContent').innerHTML = createDayHTML(dayInfo);
+      initializeAttractions();
+    }
+
+    function createDayHTML(dayInfo) {
+      let html = `<article class="content-card"><header class="content-header">
+        <div style="font-size:2.5rem;font-weight:700;margin-bottom:0.5rem">${dayInfo.placeName}</div>
+        <div style="font-size:1.2rem;opacity:0.95;margin-bottom:0.5rem">${dayInfo.subtitle}</div>
+        <div style="font-size:1rem;opacity:0.85">${dayInfo.dates}</div>
+      </header><div class="content-body">`;
+      
+      if (dayInfo.description) {
+        html += `<div class="special-highlight">${dayInfo.description}</div>`;
+      }
+      
+      html += '<div class="attractions-grid">';
+      dayInfo.attractions.forEach(attr => {
+        html += `<div class="attraction-card" data-name="${attr.name.toLowerCase()}">
+          <div class="attraction-title">
+            <div class="custom-checkbox">
+              <input type="checkbox" id="${attr.id}">
+              <span class="checkmark"></span>
+            </div>
+            <label for="${attr.id}">${attr.name}</label>
+          </div>
+          <div class="attraction-description">${attr.description}</div>
+          <div class="historical-note">${attr.historical}</div>
+          <div class="travel-info">${attr.travel}</div>
+    ${attr.wikipedia ? `
+<div 
+    class="travel-info" 
+    data-wikipedia="${attr.wikipedia}"
+    style="color:#1a73e8; cursor:pointer; text-decoration:underline;"
+    onclick="window.open(this.getAttribute('data-wikipedia'), '_blank')">
+    Wikipedia
+</div>` : ''}
+
+
+
+          <button class="expand-button" onclick="toggleDetails('${attr.id}-details')">Read More</button>
+          <div class="detailed-info" id="${attr.id}-details">
+            ${attr.details.sections.map(s => `<div class="info-section">
+              <div class="info-title">${s.title}</div>
+              <div class="info-content">${s.content}</div>
+            </div>`).join('')}
+            <div class="timing-info">${attr.details.timing}</div>
+          </div>
+        </div>`;
+      });
+      html += '</div></div></article>';
+      return html;
+    }
+function goBackToSelection() {
+  const dayPage = document.getElementById('daySelectionPage');
+  const mainContent = document.getElementById('mainContent');
+
+  // Start transition
+  mainContent.style.transform = 'translateX(100%)';
+  mainContent.style.opacity = '0';
+
+  setTimeout(() => {
+    mainContent.style.display = 'none';
+
+    // Prepare dayPage to animate in
+    dayPage.style.display = 'flex';
+    dayPage.style.transform = 'translateX(-100%)';
+    dayPage.style.opacity = '0';
+
+    requestAnimationFrame(() => {
+      dayPage.style.transform = 'translateX(0)';
+      dayPage.style.opacity = '1';
+    });
+
+    document.querySelectorAll('.day-card').forEach(c => c.style.pointerEvents = 'auto');
+  }, 300);
+}
+
+
+    function navigateDay(direction) {
+      const newDay = currentDay + direction;
+      if (newDay < 1 || newDay > 7) return;
+      currentDay = newDay;
+      loadDayContent(currentDay);
+      updateNavigation();
+    }
+
+    function updateNavigation() {
+      const dayInfo = dayData[currentDay];
+      if (dayInfo) {
+        document.getElementById('currentDateDisplay').innerHTML = 
+          `${dayInfo.placeName} • ${dayInfo.dates}<br><small style="opacity:0.8;font-size:0.75rem">${dayInfo.subtitle}</small>`;
+      }
+      document.getElementById('prevDayBtn').disabled = currentDay <= 1;
+      document.getElementById('nextDayBtn').disabled = currentDay >= 7;
+    }
+
+    function initializeAttractions() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      totalAttractions = checkboxes.length;
+      completedAttractions = 0;
+      loadProgress();
+      checkboxes.forEach(cb => {
+        if (checkboxStates[cb.id]) {
+          cb.checked = true;
+          completedAttractions++;
+          cb.closest('.attraction-card')?.classList.add('visited');
+        }
+        cb.addEventListener('change', function() {
+          const card = this.closest('.attraction-card');
+          if (this.checked) {
+            completedAttractions++;
+            card.classList.add('visited');
+            checkboxStates[this.id] = true;
+            showNotification(`${card.querySelector('label').textContent} completed!`);
+          } else {
+            completedAttractions--;
+            card.classList.remove('visited');
+            checkboxStates[this.id] = false;
+          }
+          updateProgress();
+          saveProgress();
+        });
+      });
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const pct = totalAttractions > 0 ? Math.round((completedAttractions / totalAttractions) * 100) : 0;
+      document.getElementById('progressText').textContent = pct + '%';
+      document.getElementById('progressDetails').textContent = `${completedAttractions}/${totalAttractions} Sites Visited`;
+      const deg = (pct / 100) * 360;
+      document.getElementById('progressCircle').style.background = 
+        `conic-gradient(var(--primary) ${deg}deg, var(--bg-tertiary) ${deg}deg)`;
+      if (pct === 100 && totalAttractions > 0) {
+        showNotification('Complete! Well Done!');
+      }
+    }
+
+    function setupSearch() {
+      document.getElementById('searchInput').addEventListener('input', function() {
+        const term = this.value.toLowerCase().trim();
+        document.querySelectorAll('.attraction-card').forEach(card => {
+          const name = card.getAttribute('data-name') || '';
+          const title = card.querySelector('.attraction-title label').textContent.toLowerCase();
+          const desc = card.querySelector('.attraction-description').textContent.toLowerCase();
+          const matches = name.includes(term) || title.includes(term) || desc.includes(term);
+          if (term === '' || matches) {
+            card.style.display = 'block';
+            card.style.opacity = '1';
+          } else {
+            card.style.opacity = '0.3';
+          }
+        });
+      });
+    }
+
+    function setupScrollEffects() {
+      const fab = document.getElementById('fabScrollTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          fab.classList.add('visible');
+        } else {
+          fab.classList.remove('visible');
+        }
+      }, { passive: true });
+    }
+
+    function toggleDetails(detailsId) {
+      const details = document.getElementById(detailsId);
+      const button = event.target;
+      document.querySelectorAll('.detailed-info').forEach(d => {
+        if (d !== details && d.classList.contains('show')) d.classList.remove('show');
+      });
+      document.querySelectorAll('.expand-button').forEach(b => {
+        if (b !== button) {
+          b.textContent = 'Read More';
+          b.style.background = 'var(--gradient-primary)';
+        }
+      });
+      if (details.classList.contains('show')) {
+        details.classList.remove('show');
+        button.textContent = 'Read More';
+        button.style.background = 'var(--gradient-primary)';
+      } else {
+        details.classList.add('show');
+        button.textContent = 'Read Less';
+        button.style.background = 'var(--gradient-secondary)';
+        setTimeout(() => details.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 200);
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateJourneyPreview() {
+      const grid = document.getElementById('daysGrid');
+      grid.innerHTML = '';
+      Object.values(dayData).forEach((place, idx) => {
+        const card = document.createElement('div');
+        card.className = 'day-card';
+        card.onclick = (e) => selectDay(idx + 1, e);
+        card.style.animationDelay = `${idx * 0.1}s`;
+        card.innerHTML = `
+          <div class="day-header">
+            <div class="day-number">${idx + 1}</div>
+            <div class="day-info">
+              <div class="day-title">${place.placeName}</div>
+              <div class="day-date">${place.subtitle}</div>
+            </div>
+          </div>
+          <div class="day-destinations">${place.destinations}</div>
+          <div class="travel-info">${place.travel}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    updateJourneyPreview();
+    setTimeout(() => document.getElementById('loading').classList.add('hide'), 1500);
+  </script>
+</body>
+</html>
